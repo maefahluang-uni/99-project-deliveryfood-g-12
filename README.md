@@ -1,8 +1,5 @@
-Project
+DeliveryFood
 =============
-Please use this template for your project.
-
-List your group's member's below with ID and name.
 
 1. Chann Myae Zaw 6531503136
 
