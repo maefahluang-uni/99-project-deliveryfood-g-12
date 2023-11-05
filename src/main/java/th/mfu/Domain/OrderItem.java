@@ -1,6 +1,5 @@
 package th.mfu.Domain;
 
-public class Menu {
-    
+public class OrderItem {
     
 }
