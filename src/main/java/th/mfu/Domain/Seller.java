@@ -15,11 +15,13 @@ public class Seller {
     private int id;
     private String name;
 
-
-    
+    //add relationship to order
     @OneToMany(cascade = CascadeType.ALL)
+    private Order order; 
 
-    private Order order;
+    //add relationship to orderitem
+    @OneToMany(cascade = CascadeType.ALL)
+    private Item item;
 
     //generated Getters and Setters
     public int getId() {
