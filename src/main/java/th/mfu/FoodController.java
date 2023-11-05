@@ -49,4 +49,40 @@ public class FoodController {
 
     @Autowired
     OrderItemRepository OrderItemRepo;
+
+    @GetMapping
+    public String addABuyerSingupForm(Model model){
+        model.addAttribute("buyer", new Buyer());
+        return "";
+    }
+
+    @PostMapping
+    public String saveBuyer(@ModelAttribute Buyer buyer){
+        buyerRepo.save(buyer);
+        return"";
+    }
+     
+    @GetMapping
+    public String addASellerSingupForm(Model model){
+        model.addAttribute("seller", new Seller());
+        return "";
+    }
+
+    @PostMapping
+    public String saveSeller(@ModelAttribute Buyer buyer){
+        buyerRepo.save(buyer);
+        return"";
+    }
+     
+    @GetMapping
+    public String addARiderSingupForm(Model model){
+        model.addAttribute("buyer", new Buyer());
+        return "";
+    }
+
+    @PostMapping
+    public String saveRider(@ModelAttribute Buyer buyer){
+        buyerRepo.save(buyer);
+        return"";
+    }
 }

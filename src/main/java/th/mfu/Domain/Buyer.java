@@ -16,6 +16,15 @@ public class Buyer {
 
     private String name;
     private long Id;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @OneToMany(cascade = CascadeType.ALL)
     private Order order;
@@ -43,6 +52,6 @@ public class Buyer {
     public void setOrder(Order order) {
         this.order = order;
     }
-    
+
 
 }

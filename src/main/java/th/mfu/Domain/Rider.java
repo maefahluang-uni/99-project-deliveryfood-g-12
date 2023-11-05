@@ -14,8 +14,21 @@ public class Rider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;   
+    private String name;
+    private String password;   
 
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public Order getOrder() {
+        return order;
+    }
+    public void setOrder(Order order) {
+        this.order = order;
+    }
     @OneToMany(cascade = CascadeType.ALL)
     private Order order;
 
