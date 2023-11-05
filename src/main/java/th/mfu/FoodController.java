@@ -50,6 +50,7 @@ public class FoodController {
     @Autowired
     OrderItemRepository OrderItemRepo;
 
+    //BUYER
     @GetMapping
     public String addABuyerSingupForm(Model model){
         model.addAttribute("buyer", new Buyer());
@@ -85,4 +86,29 @@ public class FoodController {
         buyerRepo.save(buyer);
         return"";
     }
+
+    @Transactional
+    @GetMapping("/login/{id}")
+    public String login(@PathVariable Long id) {
+        if(buyerRepo.existsById(id) == true) {
+            return "";
+        }
+        else if(sellerRepo.existsById(id) == true) {
+            return "";
+        }
+        else if(riderRepo.existsById(id) == true) {
+            return "";
+        }
+        else {
+            return "";
+        }
+    }
+
+    @GetMapping("/buyer-homepage")
+    public String listSeller (Model model) {
+        model.addAttribute("sellers", sellerRepo.findAll());
+        return "";
+    }
+
+   //addtocart lab04 
 }

@@ -1,5 +1,7 @@
 package th.mfu.Domain;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Generated;
 import javax.persistence.CascadeType;
@@ -17,6 +19,8 @@ public class Buyer {
     private String name;
     private long Id;
     private String password;
+
+    private List<Item> cart = new ArrayList<Item> ();
 
     public String getPassword() {
         return password;
@@ -53,5 +57,12 @@ public class Buyer {
         this.order = order;
     }
 
+    public List<Item> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<Item> cart) {
+        this.cart = cart;
+    }
 
 }
