@@ -43,5 +43,4 @@ public class Buyer {
     public void setOrder(Order order) {
         this.order = order;
     }
-    
 }
