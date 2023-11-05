@@ -110,5 +110,12 @@ public class FoodController {
         return "";
     }
 
-   //addtocart lab04 
+   @GetMapping("/buyer-add-food/{id}") 
+   public String addToCart (@ModelAttribute Buyer buyer, @PathVariable Long id,Model model) {
+    model.addAttribute("cartItem", new Item());
+    Item item = itemRepo.findById(id).get();
+    buyer.getCart().add(item);
+    return ""; //redirect sthhhh
+   }
+
 }
