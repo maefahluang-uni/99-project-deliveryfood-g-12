@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
 
     //add relationship to order
@@ -24,11 +24,11 @@ public class Seller {
     private Item item;
 
     //generated Getters and Setters
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
