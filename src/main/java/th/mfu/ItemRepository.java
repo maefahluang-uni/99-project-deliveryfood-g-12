@@ -1,4 +1,4 @@
-package th.mfu.Domain;
+package th.mfu;
 
 import java.util.List;
 
