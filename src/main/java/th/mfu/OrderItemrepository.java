@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import th.mfu.Domain.OrderItem;
 
-public interface OrderItemrepository extends CrudRepository<OrderItem,Long>{
+public interface OrderItemRepository extends CrudRepository<OrderItem,Long>{
  
 } 

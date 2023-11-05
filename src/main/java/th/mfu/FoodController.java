@@ -32,4 +32,21 @@ import th.mfu.Domain.OrderItem;
 @Controller
 public class FoodController {
     
+    @Autowired
+    BuyerRepository buyerRepo;
+
+    @Autowired
+    SellerRepository sellerRepo;
+
+    @Autowired
+    RiderRepository riderRepo;
+
+    @Autowired
+    ItemRepository itemRepo;
+
+    @Autowired
+    OrderRepository orderRepo;
+
+    @Autowired
+    OrderItemRepository OrderItemRepo;
 }
