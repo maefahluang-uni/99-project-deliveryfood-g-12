@@ -51,12 +51,15 @@ public class FoodController {
     OrderItemRepository OrderItemRepo;
 
     //BUYER
+
+    //to create buyer account
     @GetMapping
     public String addABuyerSingupForm(Model model){
         model.addAttribute("buyer", new Buyer());
         return "";
     }
 
+    //to save buyer account
     @PostMapping
     public String saveBuyer(@ModelAttribute Buyer buyer){
         buyerRepo.save(buyer);
