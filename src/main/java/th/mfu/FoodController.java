@@ -66,24 +66,28 @@ public class FoodController {
         return"";
     }
      
+    //to create seller account
     @GetMapping
     public String addASellerSingupForm(Model model){
         model.addAttribute("seller", new Seller());
         return "";
     }
 
+    //to save seller account
     @PostMapping
     public String saveSeller(@ModelAttribute Buyer buyer){
         buyerRepo.save(buyer);
         return"";
     }
      
+    //to add rider account
     @GetMapping
     public String addARiderSingupForm(Model model){
         model.addAttribute("buyer", new Buyer());
         return "";
     }
 
+    //to save rider account
     @PostMapping
     public String saveRider(@ModelAttribute Buyer buyer){
         buyerRepo.save(buyer);
@@ -91,6 +95,7 @@ public class FoodController {
     }
 
     @Transactional
+    //to login for each type of user
     @GetMapping("/login/{id}")
     public String login(@PathVariable Long id) {
         if(buyerRepo.existsById(id) == true) {
@@ -107,12 +112,14 @@ public class FoodController {
         }
     }
 
+    //to show menu for buyer to browse
     @GetMapping("/buyer-homepage")
     public String listSeller (Model model) {
         model.addAttribute("sellers", sellerRepo.findAll());
         return "";
     }
 
+    //to add items to the cart
    @GetMapping("/buyer-add-food/{id}") 
    public String addToCart (@ModelAttribute Buyer buyer, @PathVariable Long id,Model model) {
     model.addAttribute("cartItem", new Item());
