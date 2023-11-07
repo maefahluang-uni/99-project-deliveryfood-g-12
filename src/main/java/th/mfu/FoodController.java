@@ -50,7 +50,7 @@ public class FoodController {
     @Autowired
     OrderItemRepository OrderItemRepo;
 
-    //BUYER
+    /////////////////////////////////Buyer
 
     //to create buyer account
     @GetMapping
@@ -62,34 +62,6 @@ public class FoodController {
     //to save buyer account
     @PostMapping
     public String saveBuyer(@ModelAttribute Buyer buyer){
-        buyerRepo.save(buyer);
-        return"";
-    }
-     
-    //to create seller account
-    @GetMapping
-    public String addASellerSingupForm(Model model){
-        model.addAttribute("seller", new Seller());
-        return "";
-    }
-
-    //to save seller account
-    @PostMapping
-    public String saveSeller(@ModelAttribute Buyer buyer){
-        buyerRepo.save(buyer);
-        return"";
-    }
-     
-    //to add rider account
-    @GetMapping
-    public String addARiderSingupForm(Model model){
-        model.addAttribute("buyer", new Buyer());
-        return "";
-    }
-
-    //to save rider account
-    @PostMapping
-    public String saveRider(@ModelAttribute Buyer buyer){
         buyerRepo.save(buyer);
         return"";
     }
@@ -112,20 +84,177 @@ public class FoodController {
         }
     }
 
-    //to show menu for buyer to browse
+    //to show all shops for buyer to browse (same for showing discount, popular and delivery free items)
     @GetMapping("/buyer-homepage")
     public String listSeller (Model model) {
         model.addAttribute("sellers", sellerRepo.findAll());
         return "";
     }
 
+    //Check line 151
+    //to show items of the selected shop
+    @GetMapping("")
+    //id is seller id
+    public String showItems (@PathVariable Long id, Model model) {
+        model.addAttribute("shopitems", itemRepo.findAllById(id));
+        return "";
+    }
+
     //to add items to the cart
    @GetMapping("/buyer-add-food/{id}") 
+   //id is item id
    public String addToCart (@ModelAttribute Buyer buyer, @PathVariable Long id,Model model) {
-    model.addAttribute("cartItem", new Item());
-    Item item = itemRepo.findById(id).get();
-    buyer.getCart().add(item);
-    return ""; //redirect sthhhh
+        model.addAttribute("cartItem", new Item());
+        //how to get the id of the item the user clicked??
+        Item item = itemRepo.findById(id).get();
+        buyer.getCart().add(item);
+        return ""; //redirect sthhhh
    }
 
+   //to view cart
+   @GetMapping("")
+   public String viewCart(@ModelAttribute Buyer buyer, @PathVariable Long id, Model model) {
+        //find the user by the user id
+
+        //loop through the cart of that user
+
+        return "";
+   }
+
+   //********************************************* */
+   //to make payment(to move items from cart to order)
+   @GetMapping("")
+   public String makeOrder(@ModelAttribute Buyer buyer, @PathVariable Long id, Model model) {
+        //add an order
+        Order order = new Order();
+
+        //add items to orderItem
+        for (int i = 0, i< buyer.get().getCart().size(), i++) { //***************************** */
+            OrderItem orderItem = new OrderItem();
+            orderItem = itemRepo.findById(buyer.getCart().get(i).getId());
+            order.setOrderItem(orderItem);
+        }
+        buyer.setOrder(order);
+
+        //set a rider randomly
+
+        //how?????? (Math.random or smth like that!!!!)
+
+        return ""; // thank you page
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+   //////////////////////////////Seller
+
+   //to create seller account
+    @GetMapping
+    public String addASellerSingupForm(Model model){
+        model.addAttribute("seller", new Seller());
+        return "";
+    }
+
+    //to save seller account
+    @PostMapping
+    public String saveSeller(@ModelAttribute Buyer buyer){
+        buyerRepo.save(buyer);
+        return"";
+    }
+
+    //Check line 94
+    //to view the seller's shop menu
+    @GetMapping("")
+    public String viewShopMenu(@PathVariable Long id, Model model) {
+        model.addAttribute("shopItems", itemRepo.findAllById(id));
+        return "";
+    }
+
+    //to create new item
+    @GetMapping("")
+    public String addItemCreateForm(Model model) {
+        model.addAttribute("item", new Item());
+        return "";
+    }
+
+    //to save new item
+    @PostMapping("")
+    // id is seller id
+    public String saveItem(@ModelAttribute Item item, @PathVariable Long id) {
+        Seller seller = sellerRepo.findById(id); //***************************************** */
+        seller.setItem(item);
+        itemRepo.save(item);
+        return "";
+    }
+
+    //to delete item from shop menu
+    @GetMapping("")
+    public String deleteItem(@PathVariable Long id) {
+        itemRepo.deleteById(id);
+        return "";
+    }
+
+    //to show orders
+    @GetMapping("")
+    public String showOrders(@PathVariable Long id, Model model) {
+        model.addAttribute("orders", orderRepo.findAllById(id));
+        return "";
+    }
+
+
+    //accepting order is enough with just HTML
+
+    //to deny customer's order
+    @GetMapping("")
+    // id is item id
+    public String denyOrder(@PathVariable Long id) {
+        orderRepo.deleteById(id);
+        return "";
+    }
+
+
+
+
+
+
+
+
+    /////////////////////////////////////Rider
+    //to add rider account
+    @GetMapping("")
+    public String addARiderSingupForm(Model model){
+        model.addAttribute("buyer", new Buyer());
+        return "";
+    }
+
+    //to save rider account
+    @PostMapping
+    public String saveRider(@ModelAttribute Buyer buyer){
+        buyerRepo.save(buyer);
+        return"";
+    }
+
+    //to show deliveries 
+    @GetMapping("")
+    public String showAllDeliveries(Model model) {
+        model.addAttribute("orders", orderRepo.findAll());
+        return "";
+    }
+
+    //to show delivery details
+    @GetMapping("")
+    // id is rider id
+    public String showDeliveryDetails(@PathVariable Long id, Model model) {
+        model.addAttribute("deliveryDetails", orderRepo.findById(id));
+        return "";
+    }
 }
