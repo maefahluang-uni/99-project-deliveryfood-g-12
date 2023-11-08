@@ -113,11 +113,13 @@ public class FoodController {
 
    //to view cart
    @GetMapping("")
-   public String viewCart(@ModelAttribute Buyer buyer, @PathVariable Long id, Model model) {
+   public String viewCart(@PathVariable Long id, Model model) {
         //find the user by the user id
-
+        Buyer cartBuyer = buyerRepo.findById(id).get();
         //loop through the cart of that user
-
+        if(cartBuyer.getCart() != null){
+            model.addAttribute("cartItems", cartBuyer.getCart());
+        }
         return "";
    }
 
@@ -129,12 +131,29 @@ public class FoodController {
         Order order = new Order();
 
         //add items to orderItem
-        for (int i = 0, i< buyer.get().getCart().size(), i++) { //***************************** */
+        List<Item> cartItems = buyer.getCart();
+
+        if(!cartItems.isEmpty()){
+            List<OrderItem> orderItems = new ArrayList<>();
+
+            for (Item cartItem : cartItems){
+                OrderItem orderItem = cartItem;
+                order.setOrderItem(orderItem);
+            }
+            orderRepo.save(order);
+            buyer.setOrder(order);
+            buyer.getCart().clear();
+            buyerRepo.save(buyer);
+        }
+
+        /* 
+        for (int i = 0, i< buyer.get().getCart().size(), i++) { //***************************** 
             OrderItem orderItem = new OrderItem();
             orderItem = itemRepo.findById(buyer.getCart().get(i).getId());
             order.setOrderItem(orderItem);
         }
         buyer.setOrder(order);
+        */
 
         //set a rider randomly
 
