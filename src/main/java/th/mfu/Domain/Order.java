@@ -15,6 +15,17 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double amount;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    private Rider rider;
+
+    public Rider getRider() {
+        return rider;
+    }
+
+    public void setRider(Rider rider) {
+        this.rider = rider;
+    }
 
     @OneToMany(cascade = CascadeType.ALL)
     private OrderItem orderItem;

@@ -113,11 +113,13 @@ public class FoodController {
 
    //to view cart
    @GetMapping("")
-   public String viewCart(@ModelAttribute Buyer buyer, @PathVariable Long id, Model model) {
+   public String viewCart(@PathVariable Long id, Model model) {
         //find the user by the user id
-
+        Buyer cartBuyer = buyerRepo.findById(id).get();
         //loop through the cart of that user
-
+        if(cartBuyer.getCart() != null){
+            model.addAttribute("cartItems", cartBuyer.getCart());
+        }
         return "";
    }
 
@@ -129,12 +131,41 @@ public class FoodController {
         Order order = new Order();
 
         //add items to orderItem
-        for (int i = 0, i< buyer.get().getCart().size(), i++) { //***************************** */
+        List<Item> cartItems = buyer.getCart();
+
+        if(!cartItems.isEmpty()){
+            List<OrderItem> orderItems = new ArrayList<>();
+
+            for (Item cartItem : cartItems){
+                OrderItem orderItem = new OrderItem();
+                orderItem.setItem(cartItem);
+                orderItems.add(orderItem);
+            }
+            order.setOrderItem((OrderItem) orderItems);
+            orderRepo.save(order);
+
+            buyer.setOrder(order);
+            buyer.getCart().clear();
+            buyerRepo.save(buyer);
+
+            List<Rider> availableRiders = (List<Rider>) riderRepo.findAll();
+
+            if(!availableRiders.isEmpty()){
+                int randomIndex = (int) (Math.random() * availableRiders.size());
+                Rider randomRider = availableRiders.get(randomIndex);
+                order.setRider(randomRider);
+                orderRepo.save(order);
+            }
+        }
+
+        /* 
+        for (int i = 0, i< buyer.get().getCart().size(), i++) { //***************************** 
             OrderItem orderItem = new OrderItem();
             orderItem = itemRepo.findById(buyer.getCart().get(i).getId());
             order.setOrderItem(orderItem);
         }
         buyer.setOrder(order);
+        */
 
         //set a rider randomly
 
@@ -142,16 +173,6 @@ public class FoodController {
 
         return ""; // thank you page
    }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -190,7 +211,7 @@ public class FoodController {
     @PostMapping("")
     // id is seller id
     public String saveItem(@ModelAttribute Item item, @PathVariable Long id) {
-        Seller seller = sellerRepo.findById(id); //***************************************** */
+        Seller seller = sellerRepo.findById(id).orElse(null); //***************************************** */
         seller.setItem(item);
         itemRepo.save(item);
         return "";
@@ -220,13 +241,6 @@ public class FoodController {
         orderRepo.deleteById(id);
         return "";
     }
-
-
-
-
-
-
-
 
     /////////////////////////////////////Rider
     //to add rider account
