@@ -137,10 +137,13 @@ public class FoodController {
             List<OrderItem> orderItems = new ArrayList<>();
 
             for (Item cartItem : cartItems){
-                OrderItem orderItem = cartItem;
-                order.setOrderItem(orderItem);
+                OrderItem orderItem = new OrderItem();
+                orderItem.setItem(cartItem);
+                orderItems.add(orderItem);
             }
+            order.setOrderItem((OrderItem) orderItems);
             orderRepo.save(order);
+
             buyer.setOrder(order);
             buyer.getCart().clear();
             buyerRepo.save(buyer);

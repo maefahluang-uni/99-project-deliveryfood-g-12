@@ -9,7 +9,7 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
+    private Item item;
     private int quantity;
     public long getId() {
         return id;
@@ -17,11 +17,11 @@ public class OrderItem {
     public void setId(long id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
+    public Item getItem() {
+        return item;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setItem(Item item) {
+        this.item = item;
     }
     public int getQuantity() {
         return quantity;
