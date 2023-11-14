@@ -147,6 +147,15 @@ public class FoodController {
             buyer.setOrder(order);
             buyer.getCart().clear();
             buyerRepo.save(buyer);
+
+            List<Rider> availableRiders = riderRepo.findAll();
+
+            if(!availableRiders.isEmpty()){
+                int randomIndex = (int) (Math.random() * avalableRiders.size());
+                Rider randomRider = availableRiders.get(randomIndex);
+                order.setRider(randomRider);
+                orderRepo.save(order);
+            }
         }
 
         /* 
@@ -164,16 +173,6 @@ public class FoodController {
 
         return ""; // thank you page
    }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -242,13 +241,6 @@ public class FoodController {
         orderRepo.deleteById(id);
         return "";
     }
-
-
-
-
-
-
-
 
     /////////////////////////////////////Rider
     //to add rider account
