@@ -148,10 +148,10 @@ public class FoodController {
             buyer.getCart().clear();
             buyerRepo.save(buyer);
 
-            List<Rider> availableRiders = riderRepo.findAll();
+            List<Rider> availableRiders = (List<Rider>) riderRepo.findAll();
 
             if(!availableRiders.isEmpty()){
-                int randomIndex = (int) (Math.random() * avalableRiders.size());
+                int randomIndex = (int) (Math.random() * availableRiders.size());
                 Rider randomRider = availableRiders.get(randomIndex);
                 order.setRider(randomRider);
                 orderRepo.save(order);
@@ -211,7 +211,7 @@ public class FoodController {
     @PostMapping("")
     // id is seller id
     public String saveItem(@ModelAttribute Item item, @PathVariable Long id) {
-        Seller seller = sellerRepo.findById(id); //***************************************** */
+        Seller seller = sellerRepo.findById(id).orElse(null); //***************************************** */
         seller.setItem(item);
         itemRepo.save(item);
         return "";
