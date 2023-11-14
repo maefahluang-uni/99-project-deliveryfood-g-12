@@ -15,6 +15,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double amount;
+    
+    @OneToOne(cascade = CascadeType.ALL)
     private Rider rider;
 
     public Rider getRider() {
