@@ -25,6 +25,14 @@
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+}
+
+.backButton button{
+    cursor: pointer;
+}
+
 .backButton button img {
     margin-left: 10px;
     margin-right: 10px;
