@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
     <!-- Bootstrap CSS link (replace with your specific Bootstrap version) -->
     <link rel="stylesheet" href="cart.css">
 </head>
@@ -21,12 +22,13 @@
         <div class="content">
             <div class="container1">
                 <div class="items">
-                    <div class="itemcontainer" id="item1">
-                        <div class="delete-icon" onclick="deleteItem('item1')"><img src="delete.png" alt="delete-icon"></div>
+                    <div class="itemcontainer" th:each="cartItem : ${cartItems}" id="${cartItem.id}">
+                        <div class="delete-icon" onclick="deleteItem(${cartItem.id})"><img src="delete.png" alt="delete-icon"></div>
 
                         <div class="item">
-                            <h5>Item 1</h5>
-                            <p>Description of item 1</p>
+                            <h5 th:text="${cartItem.name}"></h5>
+                            <!--To add item image-->
+                            <p th:text="${cartItem.price}"></p>
                         </div>
                     </div>
                     

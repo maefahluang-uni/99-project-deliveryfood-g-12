@@ -112,7 +112,7 @@ public class FoodController {
    }
 
    //to view cart
-   @GetMapping("")
+   @GetMapping("/cart-list/")
    public String viewCart(@PathVariable Long id, Model model) {
         //find the user by the user id
         Buyer cartBuyer = buyerRepo.findById(id).get();
@@ -120,7 +120,7 @@ public class FoodController {
         if(cartBuyer.getCart() != null){
             model.addAttribute("cartItems", cartBuyer.getCart());
         }
-        return "";
+        return "redirect:/cart-list/";
    }
 
    //********************************************* */

@@ -14,6 +14,8 @@ public class Seller {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String password;
+
     public String getPassword() {
         return password;
     }
@@ -38,7 +40,6 @@ public class Seller {
         this.item = item;
     }
 
-    private String password;
 
     //add relationship to order
     @OneToMany(cascade = CascadeType.ALL)
