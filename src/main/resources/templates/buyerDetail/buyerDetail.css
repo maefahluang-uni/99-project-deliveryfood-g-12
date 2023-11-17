@@ -242,3 +242,51 @@ nav3 a {
     margin-left: 20px;
     margin-top: 60px;
 }
+
+.items1 {
+  display: flex;
+  padding: 24px 80px;
+  justify-content: space-between;
+  margin-top: 80px;
+  gap: 32px;
+  width: max-width;
+}
+
+.items2 {
+  display: flex;
+  padding: 24px 80px;
+  justify-content: space-between;
+  margin-top: 80px;
+  gap: 32px;
+  width: max-width;
+}
+
+.basket {
+  margin-left: 180px;
+  z-index: 1;
+  position: relative; 
+}
+
+.shape {
+  width: 200px;
+  height: 250px;
+  display: block;
+  background-color: #fff;
+  filter: drop-shadow(5px 10px 4px #b2b2b6);
+  border-radius: 100px 100px 0 0;
+}
+
+.shape {
+  margin-top: -70px;
+  z-index: 0; /* set lower z-index value */
+  position: relative; /* position must be set for z-index to work */
+}
+
+.shape img {
+  width: 200px;
+  margin-top: 50px;
+}
+
+.item h5 {
+  font-size: 24px;
+}
