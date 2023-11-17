@@ -229,31 +229,16 @@ nav3 a {
     width: 90%;
 }
 
-.shops1 {
+.backnshop {
     display: flex;
-    padding: 24px 80px;
-    justify-content: space-between;
-    margin-top: 80px;
-    width: max-width;
 }
 
-.shops1 a{
-    width: 400px;
-    text-decoration: none;
-    color: #000;
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.back {
+    margin-left: 75px;
+    margin-top: 50px;
 }
 
-.shops1 img {
-  width: 100%;
-  flex-basis: 100%;
-}
-
-.banner2 {
-  margin-top: 70px;
-  margin-left: 75px;
-  width: 90%;
+.shop_name {
+    margin-left: 20px;
+    margin-top: 60px;
 }
