@@ -181,4 +181,5 @@ a {
     margin-top: 200px;
     object-fit: cover;
     margin-bottom: 60px;
+    border-radius: 50%;
 }
