@@ -120,7 +120,7 @@ public class FoodController {
         if(cartBuyer.getCart() != null){
             model.addAttribute("cartItems", cartBuyer.getCart());
         }
-        return "";
+        return "redirect:/cart-list/";
    }
 
    //********************************************* */
