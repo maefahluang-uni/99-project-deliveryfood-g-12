@@ -1,8 +1,10 @@
 package th.mfu.Domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 public class OrderItem {
 
@@ -11,6 +13,7 @@ public class OrderItem {
     private long id;
     private Item item;
     private int quantity;
+
     public long getId() {
         return id;
     }
