@@ -13,10 +13,27 @@ public class Item {
     private Long id;
     private String name;
     private Double price;
+    
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Order order;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Seller seller;
+
+
+    public Order getOrder() {
+        return order;
+    }
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+    public Seller getSeller() {
+        return seller;
+    }
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
     public Long getId() {
         return id;
     }

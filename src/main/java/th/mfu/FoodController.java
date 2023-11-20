@@ -68,24 +68,37 @@ public class FoodController {
 
     @Transactional
     //to login for each type of user
-    @GetMapping("/login/{id}")
-    public String login(@PathVariable Long id) {
-        if(buyerRepo.existsById(id) == true) {
-            return "";
+    @GetMapping("/login/")
+    public String login(@PathVariable String email, String password) {
+        if(buyerRepo.existsByEmail(email) == true) {
+            Buyer buyer = buyerRepo.findByEmail(email);
+            if (buyer.getPassword().equals( password)) {
+                return "buyer-page";
+            }
+            return "redirect:/login/";
         }
-        else if(sellerRepo.existsById(id) == true) {
-            return "";
+        else if(sellerRepo.existsByEmail(email) == true) {
+            Seller seller = sellerRepo.findByEmail(email);
+            if(seller.getPassword().equals(password)){
+                return"seller-page";
+            }                
+
+            return "redirect:/login/";
         }
-        else if(riderRepo.existsById(id) == true) {
-            return "";
+        else if(riderRepo.existsByEmail(email) == true) {
+            Rider rider = riderRepo.findByEmail(email);
+            if(rider.getPassword().equals(password)){
+                return"rider-page";
+            }
+            return "redirect:/login/";
         }
         else {
-            return "";
+            return "redirect:/login/";
         }
     }
 
     //to show all shops for buyer to browse (same for showing discount, popular and delivery free items)
-    @GetMapping("/buyer-homepage")
+    @GetMapping("/buyer-page")
     public String listSeller (Model model) {
         model.addAttribute("sellers", sellerRepo.findAll());
         return "";
@@ -101,7 +114,7 @@ public class FoodController {
     }
 
     //to add items to the cart
-   @GetMapping("/buyer-add-food/{id}") 
+   /*@GetMapping("/buyer-add-food/{id}") 
    //id is item id
    public String addToCart (@ModelAttribute Buyer buyer, @PathVariable Long id,Model model) {
         model.addAttribute("cartItem", new Item());
@@ -109,10 +122,10 @@ public class FoodController {
         Item item = itemRepo.findById(id).get();
         buyer.getCart().add(item);
         return ""; //redirect sthhhh
-   }
+   }*/
 
    //to view cart
-   @GetMapping("/cart-list/")
+   /*@GetMapping("/cart-list/")
    public String viewCart(@PathVariable Long id, Model model) {
         //find the user by the user id
         Buyer cartBuyer = buyerRepo.findById(id).get();
@@ -121,11 +134,11 @@ public class FoodController {
             model.addAttribute("cartItems", cartBuyer.getCart());
         }
         return "redirect:/cart-list/";
-   }
+   }*/
 
    //********************************************* */
    //to make payment(to move items from cart to order)
-   @GetMapping("")
+   /*@GetMapping("")
    public String makeOrder(@ModelAttribute Buyer buyer, @PathVariable Long id, Model model) {
         //add an order
         Order order = new Order();
@@ -157,22 +170,8 @@ public class FoodController {
                 orderRepo.save(order);
             }
         }
-
-        /* 
-        for (int i = 0, i< buyer.get().getCart().size(), i++) { //***************************** 
-            OrderItem orderItem = new OrderItem();
-            orderItem = itemRepo.findById(buyer.getCart().get(i).getId());
-            order.setOrderItem(orderItem);
-        }
-        buyer.setOrder(order);
-        */
-
-        //set a rider randomly
-
-        //how?????? (Math.random or smth like that!!!!)
-
         return ""; // thank you page
-   }
+   }*/
 
 
 
@@ -187,8 +186,8 @@ public class FoodController {
 
     //to save seller account
     @PostMapping
-    public String saveSeller(@ModelAttribute Buyer buyer){
-        buyerRepo.save(buyer);
+    public String saveSeller(@ModelAttribute Seller seller){
+        sellerRepo.save(seller);
         return"";
     }
 
@@ -208,14 +207,14 @@ public class FoodController {
     }
 
     //to save new item
-    @PostMapping("")
     // id is seller id
+    /*@PostMapping("")
     public String saveItem(@ModelAttribute Item item, @PathVariable Long id) {
-        Seller seller = sellerRepo.findById(id).orElse(null); //***************************************** */
+        Seller seller = sellerRepo.findById(id).orElse(null);
         seller.setItem(item);
         itemRepo.save(item);
         return "";
-    }
+    }*/
 
     //to delete item from shop menu
     @GetMapping("")
@@ -252,8 +251,8 @@ public class FoodController {
 
     //to save rider account
     @PostMapping
-    public String saveRider(@ModelAttribute Buyer buyer){
-        buyerRepo.save(buyer);
+    public String saveRider(@ModelAttribute Rider rider){
+        riderRepo.save(rider);
         return"";
     }
 

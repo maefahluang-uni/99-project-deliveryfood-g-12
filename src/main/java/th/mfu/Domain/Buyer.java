@@ -11,16 +11,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Buyer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private String name;
+    private String email;
     private long Id;
     private String password;
 
-    private List<Item> cart = new ArrayList<Item> ();
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getPassword() {
         return password;
@@ -29,9 +37,6 @@ public class Buyer {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private Order order;
 
     public String getName() {
         return name;
@@ -48,21 +53,4 @@ public class Buyer {
     public void setId(long id) {
         Id = id;
     }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public List<Item> getCart() {
-        return cart;
-    }
-
-    public void setCart(List<Item> cart) {
-        this.cart = cart;
-    }
-
 }

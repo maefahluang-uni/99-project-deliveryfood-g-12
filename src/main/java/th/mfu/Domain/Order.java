@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -16,8 +17,30 @@ public class Order {
     private Long id;
     private double amount;
     
-    @OneToOne(cascade = CascadeType.ALL)
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Rider rider;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Seller seller;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Buyer buyer;
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
 
     public Rider getRider() {
         return rider;
@@ -26,9 +49,6 @@ public class Order {
     public void setRider(Rider rider) {
         this.rider = rider;
     }
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private OrderItem orderItem;
 
     public Long getId() {
         return id;
@@ -44,15 +64,5 @@ public class Order {
 
     public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    public OrderItem getOrderItem() {
-        return orderItem;
-    }
-
-    public void setOrderItem(OrderItem orderItem) {
-        this.orderItem = orderItem;
-    }
-
-    
+    }    
 }

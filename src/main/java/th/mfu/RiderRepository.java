@@ -7,5 +7,9 @@ import org.springframework.data.repository.CrudRepository;
 import th.mfu.Domain.Rider;
 
 public interface RiderRepository extends CrudRepository<Rider, Long>{
+
+    boolean existsByEmail(String email);
+
+    Rider findByEmail(String email);
     
 }
