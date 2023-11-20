@@ -18,10 +18,15 @@
   }
 
   .container{
-    width: 946px;
-    height: 881px;
-    background-color:#fdb372;
+    width: 740px;
+    height: 700px;
+    background-color: rgba(255, 174, 69, 0.4);
     margin: auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    padding-top: 10px;
+    padding-left: 30px;
+    border-radius: 45px;
   }
 
   form{
@@ -35,26 +40,64 @@
   }
 
   form input{
-    width: 100%;
+    width: 95%;
+    height: 40px;
     padding: 7px;
     border: none;
     border-radius: 5%;
     outline: none;
+    align-items: center;
+    border-radius:5px ;
+    filter: drop-shadow(5px 5px 5px gray);
   }
+
+  .name{
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .first-name{
+    width: 45%;
+
+  }
+
+  .last-name{
+    width: 45%;
+    margin-left: 50px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        px;
+  }
+
+  select{
+    width: 95%;
+    height: 40px;
+    padding: 7px;
+    border: none;
+    border-radius: 5%;
+    outline: none;
+    align-items: center;
+    border-radius:5px ;
+    filter: drop-shadow(5px 5px 5px gray);
+  }
+
+  option{
+    background-color:  rgb(255, 255, 255);
+    border: none;
+  }
+  
 
   .container .btn{
     width: 150px;
-    height: 55px;
+    height: 50px;
     border-radius: 40px;
     background-color: #FB963C;
     border: none;
     outline: none;
-    margin: 20px 400px;
+    margin: 20px 250px;
     margin-top: 20px;
     color:#FBFBFB;
     font-size: 25px;
     font-weight: 600;
-    padding: 14px 20px;
+    padding: 10px 20px;
     cursor: pointer;
     opacity: 0.9;
+    filter: drop-shadow(3px 3px 3px rgb(108, 107, 107));
   }
