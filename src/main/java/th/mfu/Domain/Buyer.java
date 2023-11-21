@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Buyer {
@@ -21,6 +22,17 @@ public class Buyer {
     private String email;
     private long Id;
     private String password;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Order order;
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
     public String getEmail() {
         return email;
@@ -53,5 +65,5 @@ public class Buyer {
     public void setId(long id) {
         Id = id;
     }
-    
+
 }
