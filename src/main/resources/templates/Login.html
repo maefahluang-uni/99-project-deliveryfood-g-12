@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="../templates/css/Login.css">
     <title>Login</title>
     <link rel="icon" type="image/x-icon" href="../images/logo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-  <form action="">
+  <form th:action="@{/RoleChoosing}" method="post">
     <div class="container"> 
       <div class="logo">
         <img src="logo.png">
@@ -23,8 +23,8 @@
         <input type="password" placeholder="Password" id="password" th:field="*{password}" required>
         <i class='bx bxs-key' id="keyIcon"></i>
       </div>
-    <button th:href="@{/login/}" type="submit" class="btn">Login</button>
-    <p>Don't have an account? <a href="../RoleChoosing/Role_Choosing2.html">Sign Up</a></p>
+    <button type="submit" class="btn">Login</button>
+    <p>Don't have an account? <a href="Role_Choosing2.html">Sign Up</a></p>
 </div>
   </form>
 </body>

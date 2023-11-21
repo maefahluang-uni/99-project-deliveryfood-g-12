@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="../templates/css/SignUp.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            }
+
+            body {
+            width: 1280px;
+            margin: auto;
+            background-image: url(../images/LoginBg.png);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: 1280px;
+            }
+
+            .container{
+            width: 740px;
+            height: 700px;
+            background-color: rgba(255, 174, 69, 0.4);
+            margin: auto;
+            margin-top: 80px;
+            margin-bottom: 80px;
+            padding-top: 10px;
+            padding-left: 30px;
+            border-radius: 45px;
+            }
+
+            form{
+            margin-left: 20px;
+            }
+
+            form label{
+            display: flex;
+            margin-top: 20px;
+            font-size: 20px;
+            }
+
+            form input{
+            width: 95%;
+            height: 40px;
+            padding: 7px;
+            border: none;
+            border-radius: 5%;
+            outline: none;
+            align-items: center;
+            border-radius:5px ;
+            filter: drop-shadow(5px 5px 5px gray);
+            margin-bottom: 15px;
+            }
+
+            .name{
+            display: flex;
+            margin-bottom: 20px;
+            }
+
+            .first-name{
+            width: 45%;
+            }
+
+            .last-name{
+            width: 45%;    
+            margin-left: 50px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        px;
+            }
+
+            .container .btn{
+            width: 150px;
+            height: 50px;
+            border-radius: 40px;
+            background-color: #FB963C;
+            border: none;
+            outline: none;
+            margin: 20px 250px;
+            margin-top: 20px;
+            color:#FBFBFB;
+            font-size: 25px;
+            font-weight: 600;
+            padding: 10px 20px;
+            cursor: pointer;
+            opacity: 0.9;
+            filter: drop-shadow(3px 3px 3px rgb(108, 107, 107));
+            }
+    </style>
+</head>
+<body>
+    <form th:action="@{/login}" th:object="${buyer}" method="post">
+        <div class="container">
+            <div class="name">
+                <div class="first-name">
+                    <label for="first-name">First Name</label>
+                    <input type="text" th:field="*{name}" required>
+                </div>
+    
+            </div>
+            
+            <div class="email">
+                <label for="email">Email</label>
+                <input type="email" th:field="*{email}" required>
+            </div>
+            
+            <div class="phoneNumber">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" required>
+            </div>
+            
+            <div class="address">
+                <label for="address">Address</label>
+                <input type="text" required>
+            </div>
+            
+            <div class="password">
+                <label for="password">Password</label>
+                <input type="password" th:field="*{password}" required>
+            </div>
+
+            <div class="confirmPassword">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" required>
+            </div>
+
+            <button type="submit" class="btn">Sign up</Sign></button>
+
+        </div>
+    </form>
+</body>
+</html>
