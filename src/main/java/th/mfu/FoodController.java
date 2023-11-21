@@ -41,17 +41,20 @@ public class FoodController {
     @Autowired
     custOrderRepository custOrderRepo;
 
+
+    ////Sign up role choose
+
     /////////////////////////////////Buyer
 
     //to create buyer account
-    @GetMapping("/signup")
+    @GetMapping("/buyer-signup")
     public String addABuyerSingupForm(Model model){
         model.addAttribute("buyer", new Buyer());
-        return "buyer-signup";
+        return "signup";
     }
 
     //to save buyer account
-    @PostMapping("/rolechoose")
+    @PostMapping("/role-choose")
     public String saveBuyer(@ModelAttribute Buyer buyer){
         buyerRepo.save(buyer);
         return"login-role-choose";
@@ -59,24 +62,24 @@ public class FoodController {
 
     @Transactional
     //to login for each type of user
-    @GetMapping("/login/")
+    @GetMapping("/login")
     public String login(@PathVariable String email, String password) {
         if(buyerRepo.existsByEmail(email) == true) {
             Buyer buyer = buyerRepo.findByEmail(email);
             if (buyer.getPassword().equals( password)) {
                 return "buyer-page";
             }
-            return "redirect:/login/";
+            return "login-role-choose";
         }
         else if(riderRepo.existsByEmail(email) == true) {
             Rider rider = riderRepo.findByEmail(email);
             if(rider.getPassword().equals(password)){
                 return"rider-page";
             }
-            return "redirect:/login/";
+            return "login-role-choose";
         }
         else {
-            return "redirect:/login/";
+            return "login-role-choose";
         }
     }
 
@@ -125,19 +128,24 @@ public class FoodController {
         return ""; // thank you page
    }*/
 
+
+
+   //////////////////////////////RIDER
+
+
     //to add rider account
-    /*@GetMapping("")
+    @GetMapping("/rider-signup")
     public String addARiderSingupForm(Model model){
-        model.addAttribute("buyer", new Buyer());
-        return "";
-    }*/
+        model.addAttribute("rider", new Rider());
+        return "signup";
+    }
 
     //to save rider account
-    /*@PostMapping
+    @PostMapping("/role-choose")
     public String saveRider(@ModelAttribute Rider rider){
         riderRepo.save(rider);
-        return"";
-    }*/
+        return"login-role-choose";
+    }
 
     //to show deliveries 
     /*@GetMapping("")
