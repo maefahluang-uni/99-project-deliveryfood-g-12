@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import th.mfu.Domain.Buyer;
 import th.mfu.Domain.Rider;
-import th.mfu.Domain.Order;
+import th.mfu.Domain.custOrder;
 import th.mfu.Domain.Item;
 
 @Controller
@@ -39,7 +39,7 @@ public class FoodController {
     ItemRepository itemRepo;
 
     @Autowired
-    OrderRepository orderRepo;
+    custOrderRepository custOrderRepo;
 
     /////////////////////////////////Buyer
 

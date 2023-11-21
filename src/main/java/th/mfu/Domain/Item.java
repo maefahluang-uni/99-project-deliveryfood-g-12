@@ -19,7 +19,17 @@ public class Item {
     
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Order> orders;
+    private List<custOrder> custOrders;
+
+
+    public List<custOrder> getCustOrders() {
+        return custOrders;
+    }
+
+
+    public void setCustOrders(List<custOrder> custOrders) {
+        this.custOrders = custOrders;
+    }
 
 
     public Long getId() {
@@ -50,16 +60,5 @@ public class Item {
     public void setPrice(Double price) {
         this.price = price;
     }
-
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
     
 }

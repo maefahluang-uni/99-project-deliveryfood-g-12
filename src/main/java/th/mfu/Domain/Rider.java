@@ -17,7 +17,15 @@ public class Rider {
     private String email;
      
     @OneToOne (cascade = CascadeType.ALL)
-    private Order order;
+    private custOrder custOrder;
+
+    public custOrder getCustOrder() {
+        return custOrder;
+    }
+
+    public void setCustOrder(custOrder custOrder) {
+        this.custOrder = custOrder;
+    }
 
     public Long getId() {
         return id;
@@ -50,14 +58,5 @@ public class Rider {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
     
 }
