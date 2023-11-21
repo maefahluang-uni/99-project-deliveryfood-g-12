@@ -136,6 +136,10 @@
     display: block;
 }
 
+.vieworder a{
+    text-decoration: none;
+}
+
 .vieworder p{
     font-size: 20px;
     font-family: 'Inter';

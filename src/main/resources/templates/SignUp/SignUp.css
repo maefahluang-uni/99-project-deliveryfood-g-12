@@ -9,10 +9,10 @@
     margin: auto;
     background-image: url(LoginBg.png);
     display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-position: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-position: center;
     background-attachment: fixed;
     background-size: 1280px;
   }
@@ -58,7 +58,6 @@
 
   .first-name{
     width: 45%;
-
   }
 
   .last-name{
