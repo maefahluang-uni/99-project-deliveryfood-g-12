@@ -53,4 +53,5 @@ public class Buyer {
     public void setId(long id) {
         Id = id;
     }
+    
 }
