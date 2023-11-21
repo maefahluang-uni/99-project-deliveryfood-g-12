@@ -17,16 +17,31 @@ public class Buyer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long Id;
 
     private String name;
     private String email;
-    private long Id;
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private custOrder custorder;
+    private custOrder custOrder;
 
-    
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -43,28 +58,13 @@ public class Buyer {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public custOrder getCustOrder() {
+        return custOrder;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustOrder(custOrder custOrder) {
+        this.custOrder = custOrder;
     }
 
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long id) {
-        Id = id;
-    }
-
-    public custOrder getCustorder() {
-        return custorder;
-    }
-
-    public void setCustorder(custOrder custorder) {
-        this.custorder = custorder;
-    }
-
+        
 }
