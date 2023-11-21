@@ -49,6 +49,7 @@
     align-items: center;
     border-radius:5px ;
     filter: drop-shadow(5px 5px 5px gray);
+    margin-bottom: 15px;
   }
 
   .name{
@@ -64,24 +65,6 @@
     width: 45%;    
     margin-left: 50px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        px;
   }
-
-  select{
-    width: 95%;
-    height: 40px;
-    padding: 7px;
-    border: none;
-    border-radius: 5%;
-    outline: none;
-    align-items: center;
-    border-radius:5px ;
-    filter: drop-shadow(5px 5px 5px gray);
-  }
-
-  option{
-    background-color:  rgb(255, 255, 255);
-    border: none;
-  }
-  
 
   .container .btn{
     width: 150px;
