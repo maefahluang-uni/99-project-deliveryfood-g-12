@@ -51,10 +51,10 @@ public class FoodController {
     }
 
     //to save buyer account
-    @PostMapping("/login")
+    @PostMapping("/rolechoose")
     public String saveBuyer(@ModelAttribute Buyer buyer){
         buyerRepo.save(buyer);
-        return"/login";
+        return"login-role-choose";
     }
 
     @Transactional

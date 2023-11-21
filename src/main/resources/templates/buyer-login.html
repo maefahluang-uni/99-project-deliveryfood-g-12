@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <form th:action="@{/RoleChoosing}" method="post">
+  <form th:action="@{/RoleChoosing}" th:object="${buyer}" method="post">
     <div class="container"> 
       <div class="logo">
         <img src="logo.png">
