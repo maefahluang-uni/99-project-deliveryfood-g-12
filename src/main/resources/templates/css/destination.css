@@ -1,0 +1,267 @@
+body{
+    width: 1440px;
+    background-image: url(/src/main/resources/templates/images/DestinationBG.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+header{
+    width: 1440px;
+    height: 129px;
+}
+
+a{
+    background: none;
+}
+
+.logout-circle{
+    width: 77px;
+    height: 77px;
+    border-radius: 100px;
+    background: #FB963C;
+    margin-top: 26px;
+    margin-left: 1248px;
+    display: inline-block;
+}
+
+.logout-icon{
+    background: none;
+    width: 48px;
+    height: 48px;
+    margin-top: 13.5px;
+    margin-left: 10px;
+}
+
+.banner{
+    width: 1440px;
+    height: 895px;
+}
+
+.rect1{
+    width: 1140px;
+    height: 170px;
+    border-radius: 50px;
+    margin: auto;
+    background-color: #FB963C;
+    margin-top: 64px;
+}
+
+.shopName{
+    color: #ffffff;
+    font-family: Inter;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 44px;
+    margin-left: 54px;
+    display: inline-block;
+}
+
+.rect2{
+    width: 1140px;
+    height: 531px;
+    border-radius: 50px;
+    margin: auto;
+    background-color: #FB963C;
+    margin-top: 30px;
+}
+
+.rect3{
+    width: 1037px;
+    height: 153px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    margin-top: 68px;
+    margin-left: 52px;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.location{
+    width: 401px;
+    height: 116px;
+    margin-top: 20px;
+    margin-left: 37px;
+    display: flex;
+}
+
+.ellipse{
+    width: 15px;
+    height: 116px;
+}
+
+.ellipse1, .ellipse6{
+    width: 15px;
+    height: 15px;
+    border-radius: 100px;
+    background-color: #FFE9C9;
+}
+
+.ellipse1{
+    margin-top: 15px;
+}
+
+.ellipse6{
+    margin-top: 7px;
+}
+
+.ellipse2, .ellipse3, .ellipse4, .ellipse5{
+    width: 5px;
+    height: 5px;
+    border-radius: 100px;
+    background-color: #FFE9C9;
+    margin-left: 5px;
+}
+
+.ellipse2{
+    margin-top: 15px;
+}
+
+.ellipse3{
+    margin-top: 16px;
+}
+
+.ellipse4, .ellipse5{
+    margin-top: 5px;
+}
+
+.ellipse-text{
+    width: 364px;
+    height: 116px;
+}
+
+.begin{
+    width: 364px;
+    height: 36px;
+    margin-left: 22px;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #FB963C;
+}
+
+.end{
+    width: 364px;
+    height: 36px;
+    margin-top: 48px;
+    margin-left: 22px;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #FB963C;
+}
+
+.bahtKm{
+    width: 265px;
+    height: 135px;
+    margin-top: 9px;
+    margin-right: 37px;
+}
+
+.baht{
+    color: #FB963C;
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: end;
+    margin-top: 15px;
+}
+
+.km{
+    color: #FB963C;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: end;
+    margin-top: 15px;
+}
+
+.circle-container1{
+    width: 1037px;
+    height: 115px;
+    display: inline-flex;
+    margin-top: 39px;
+    margin-left: 52px;
+    justify-content: space-between;
+}
+
+.circle1, .circle2, .circle3{
+    width: 115px;
+    height: 115px;
+    border-radius: 100px;
+    background-color: #FFE9C9;
+}
+
+.user-icon{
+    background: none;
+    width: 70px;
+    height: 70px;
+    margin: 22px;
+}
+
+.circle-container2{
+    width: 503px;
+    height: 115px;
+    display: inline-flex;
+}
+
+.circle1-text{
+    width: 364px;
+    height: 115px;
+}
+
+ul, li{
+    background: none;
+    list-style-type: none;
+}
+
+.cusId{
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #ffffff;
+}
+
+.cusOrder{
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.circle-container3{
+    width: 249px;
+    height: 115px;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.checked-icon{
+    width: 63px;
+    height: 63px;
+    margin: 26px;
+}
+
+.phone-icon{
+    width: 60px;
+    height: 60px;
+    margin: 27px;
+}
+
+
+
