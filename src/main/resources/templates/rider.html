@@ -4,11 +4,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rider</title>
-    <link rel="icon" type="image/x-icon" href="../images/logo.png">
-    <link rel="stylesheet" href="css/rider.css">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            background-color: #ffffff;
+        }
+        
+        header{
+            width: 1440px;
+            height: 129px;
+            background-color: #FFE9C9;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        a{
+            background: none;
+        }
+        
+        .icons{
+            background: none;
+        }
+        
+        .menu-icon{
+            background: none;
+            width: 50px;
+            height: 50px;
+            margin-top: 40px;
+            margin-left: 53px;
+        }
+        
+        .logout-circle{
+            width: 77px;
+            height: 77px;
+            border-radius: 100px;
+            margin-top: 26px;
+            margin-right: 62px;
+        }
+        
+        .logout-icon{
+            background: none;
+            width: 48px;
+            height: 48px;
+            margin-top: 13.5px;
+            margin-left: 10px;
+        }
+        
+        .banner{
+            width: 1440px;
+            height: 895px;
+        }
+        
+        .orders-switch{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            height: 228px;
+            flex-direction: column;
+        
+        }
+        .switch{
+            position: relative;
+            width: 552px;
+            height: 86px;
+            border-radius: 25px;
+            margin-left: 119px;
+        }
+        
+        .switch input{
+            appearance: none;
+            width: 552px;
+            height: 86px;
+            border-radius: 50px;
+            background: #F5E0C2;
+            outline: none;
+        }
+        
+        .switch input::before,
+        .switch input::after{
+            z-index: 2;
+            position: absolute;
+            top: 56%;
+            transform: translateY(-50%);
+            font-weight: bolder;
+        }
+        
+        .switch input::before{
+            content: "All Orders";
+            font-size: 36px;
+            left: 75px;
+        }
+        
+        .switch input::after{
+            content: "Near You";
+            font-size: 36px;
+            right: 75px;
+        }
+        
+        .switch input:checked{
+            background: #F5E0C2;
+        }
+        
+        .switch label{
+            z-index: 1;
+            position: absolute;
+            top: 16px;
+            width: 277px;
+            height: 60px;
+            border-radius: 50px;
+            margin-left: 11px;
+        }
+        
+        .switch input{
+            transition: 0.25s;
+        }
+        
+        .switch input:checked::after{
+            color: #FB963C;
+            transition: color 0.5s;
+        }
+        
+        .switch input:checked::before{
+            color: #ffffff;
+            transition: color 0.5s;
+        }
+        
+        .switch input:checked+label{
+            left: 10px;
+            right: 100px;
+            background: #FB963C;
+            transition: left 0.5s, right 0.4s 0.2s;
+        }
+        
+        .switch input:not(:checked){
+            background-color: #F5E0C2;
+            transition: background 0.4s;
+        }
+        
+        .switch input:not(:checked)::before{
+            color: #FB963C;
+            transition: color 0.5s;
+        }
+        
+        .switch input:not(:checked)::after{
+            color: #ffffff;
+            transition: color 0.5s 0.2s;
+        }
+        
+        .switch input:not(:checked) + label{
+            left: 250px;
+            right: 50px;
+            background: #FB963C;
+            transition: left 0.4s 0.2s, right 0.5s, background 0.35s;
+        }
+        
+        .orders-list-container{
+            width: 1334px;
+            height: auto;
+            background-color: #FB963C;
+            margin: auto;
+            border-radius: 80px 80px 0px 0px;
+        }
+        
+        .order-lists{
+            width: 1140px;
+            height: 170px;
+            border-radius: 30px;
+            background-color: #F5E0C2;
+            display: inline-flex;
+            margin-left: 97px;
+            margin-top: 113px;
+        }
+        
+        .circle{
+            width: 115px;
+            height: 115px;
+            border-radius: 100px;
+            background-color: #FB963C;
+            margin-left: 33px;
+            margin-top: 27px;
+        }
+        
+        .user-icon{
+            background: none;
+            width: 70px;
+            height: 70px;
+            margin: 22px;
+        }
+        
+        .order-lists-text{
+            width: 364px;
+            height: 113px;
+            margin-left: 49px;
+            margin-top: 33px;
+            background: none;
+        }
+        
+        ul, li{
+            background: none;
+            list-style-type: none;
+        }
+        
+        .orderNo{
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #FB963C;
+        }
+        
+        .cusNo{
+            font-family: Inter;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            color: #FB963C;
+            margin-top: 16px;
+        }
+        
+    </style>
 </head>
 <body>
     <header>
@@ -18,7 +238,7 @@
 
         <div class="icons">
             <div class="logout-circle">
-                <a href="http://127.0.0.1:5501/src/main/resources/templates/Login/Login.html">
+                <a href="http://127.0.0.1:5501/src/main/resources/templates/Login/Login.html"> <!--!!!!!????????-->
                     <img class="logout-icon" src="images/logout 1.png" alt="">   
                 </a>    
             </div> 
