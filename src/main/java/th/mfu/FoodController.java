@@ -64,7 +64,7 @@ public class FoodController {
     }
 
     //to save buyer account
-    @PostMapping("/login")
+    @PostMapping("/save-buyer")
     public String saveBuyer(@ModelAttribute Buyer buyer){
         buyerRepo.save(buyer);
         return"redirect:/login";
@@ -159,7 +159,7 @@ public class FoodController {
     }
 
     //to save rider account
-    @PostMapping("/login")
+    @PostMapping("/save-rider")
     public String saveRider(@ModelAttribute Rider rider){
         riderRepo.save(rider);
         return"redirect:/login-role-choose";
