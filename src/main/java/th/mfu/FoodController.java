@@ -43,13 +43,13 @@ public class FoodController {
 
 
     ////Sign up role choose
-    @GetMapping("signup")
+    @GetMapping("/signup")
     public String showSignUpPage() {
         return "signup-role-choose";
     }
 
     ////Login role choose
-    @GetMapping("login")
+    @GetMapping("/login")
     public String showLoginPage() {
         return "login-role-choose";
     }
@@ -70,15 +70,21 @@ public class FoodController {
         return"redirect:/login";
     }
 
+    //to show buyer login form
+    @GetMapping("/buyer-login")
+    public String showBuyerLoginForm() {
+        return "buyer-login";
+    }
+
     @Transactional
     //to login for buyer
-    @GetMapping("/buyer-login")
+    @GetMapping("/buyers")
     public String buyerLogin(@PathVariable String email, String password) {
         Buyer buyer = buyerRepo.findByEmail(email);
         if (buyer.getPassword().equals( password)) {
                 return "buyer-page";
             }
-        return "login-role-choose";
+        return "redirect:/login";
     
         
         
@@ -102,11 +108,10 @@ public class FoodController {
     }
 
     //to show all shops for buyer to browse (same for showing discount, popular and delivery free items)
-    /*@GetMapping("/buyer-page")
-    public String listSeller (Model model) {
-        model.addAttribute("sellers", sellerRepo.findAll());
-        return "";
-    }*/
+    @GetMapping("/buyer-page")
+    public String listSeller () {
+        return "buyer";
+    }
 
     
    //********************************************* */
@@ -162,17 +167,23 @@ public class FoodController {
     @PostMapping("/save-rider")
     public String saveRider(@ModelAttribute Rider rider){
         riderRepo.save(rider);
-        return"redirect:/login-role-choose";
+        return"redirect:/login";
+    }
+
+    //to show rider login form
+    @GetMapping("/rider-login")
+    public String showRiderLoginForm() {
+        return "rider-login";
     }
 
     //to login for rider
-    @GetMapping("/rider-login")
+    @GetMapping("/riders")
     public String riderLogin(@PathVariable String email, String password) {
         Rider rider = riderRepo.findByEmail(email);
         if (rider.getPassword().equals( password)) {
                 return "rider-page";
             }
-        return "login-role-choose";
+        return "redirect:/login";
         }
     //to show deliveries 
     /*@GetMapping("")
