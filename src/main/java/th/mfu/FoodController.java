@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import th.mfu.Domain.Buyer;
 import th.mfu.Domain.Rider;
@@ -42,15 +44,27 @@ public class FoodController {
     custOrderRepository custOrderRepo;
 
 
+    ///show login or signup page
+    @GetMapping("/start-1")
+    public String showStartPage(Model model) {
+        return "choose-login-signup";
+    }
+
+
+    @GetMapping("/start-2")
+    public String showStartPage2(Model model) {
+        return "choose-login-signup";
+    }
+
     ////Sign up role choose
     @GetMapping("/signup")
-    public String showSignUpPage() {
+    public String showSignUpPage(Model model) {
         return "signup-role-choose";
     }
 
     ////Login role choose
     @GetMapping("/login")
-    public String showLoginPage() {
+    public String showLoginPage(Model model) {
         return "login-role-choose";
     }
 
@@ -65,47 +79,36 @@ public class FoodController {
 
     //to save buyer account
     @PostMapping("/save-buyer")
-    public String saveBuyer(@ModelAttribute Buyer buyer){
+    public String saveBuyer(@ModelAttribute Buyer buyer, Model model){
         buyerRepo.save(buyer);
-        return"redirect:/login";
+        Iterable<Buyer> buyerlist = buyerRepo.findAll();
+        model.addAttribute("buyer", buyerlist);
+        return"choose-login-signup";
     }
 
     //to show buyer login form
-    @GetMapping("/buyer-login")
-    public String showBuyerLoginForm() {
+    @GetMapping("/login-buyer")
+    public String showBuyerLoginForm(Model model) {
+        model.addAttribute("buyer", new Buyer());
         return "buyer-login";
     }
 
-    @Transactional
     //to login for buyer
-    @GetMapping("/buyers")
-    public String buyerLogin(@PathVariable String email, String password) {
-        Buyer buyer = buyerRepo.findByEmail(email);
-        if (buyer.getPassword().equals( password)) {
-                return "buyer-page";
+    @PostMapping("/login-buyer")
+    public String buyerLogin(@ModelAttribute Buyer buyer, Model model) {
+        if(buyerRepo.existsByEmail(buyer.getEmail())==true){
+            Buyer existBuyer = buyerRepo.findByEmail(buyer.getEmail());
+            if (buyer.getPassword().equals(existBuyer.getPassword())) {
+                return"buyer.html";
             }
-        return "redirect:/login";
-    
-        
-        
-        /*if(buyerRepo.existsByEmail(email) == true) {
-            Buyer buyer = buyerRepo.findByEmail(email);
-            if (buyer.getPassword().equals( password)) {
-                return "buyer-page";
+            else {
+                return "login-role-choose";
             }
+        } else {
             return "login-role-choose";
         }
-        else if(riderRepo.existsByEmail(email) == true) {
-            Rider rider = riderRepo.findByEmail(email);
-            if(rider.getPassword().equals(password)){
-                return"rider-page";
-            }
-            return "login-role-choose";
-        }
-        else {
-            return "login-role-choose";
-        }*/
-    }
+    } 
+        
 
     //to show all shops for buyer to browse (same for showing discount, popular and delivery free items)
     @GetMapping("/buyer-page")
@@ -165,26 +168,33 @@ public class FoodController {
 
     //to save rider account
     @PostMapping("/save-rider")
-    public String saveRider(@ModelAttribute Rider rider){
+    public String saveRider(@ModelAttribute Rider rider, Model model){
         riderRepo.save(rider);
-        return"redirect:/login";
+        return"choose-login-signup";
     }
 
     //to show rider login form
-    @GetMapping("/rider-login")
-    public String showRiderLoginForm() {
+    @GetMapping("/login-rider")
+    public String showRiderLoginForm(Model model) {
+        model.addAttribute("rider", new Rider());
         return "rider-login";
     }
 
     //to login for rider
-    @GetMapping("/riders")
-    public String riderLogin(@PathVariable String email, String password) {
-        Rider rider = riderRepo.findByEmail(email);
-        if (rider.getPassword().equals( password)) {
-                return "rider-page";
+    @PostMapping("/login-rider")
+    public String riderLogin(@ModelAttribute Rider rider, Model model) {
+        if(riderRepo.existsByEmail(rider.getEmail())==true){
+            Rider existRider = riderRepo.findByEmail(rider.getEmail());
+            if (rider.getPassword().equals(existRider.getPassword())) {
+                return"rider.html";
             }
-        return "redirect:/login";
+            else {
+                return "login-role-choose";
+            }
+        } else {
+            return "login-role-choose";
         }
+    }
     //to show deliveries 
     /*@GetMapping("")
     public String showAllDeliveries(Model model) {
