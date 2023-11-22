@@ -7,6 +7,193 @@
     <link rel="icon" type="image/x-icon" href="../images/logo.png">
     <!-- Bootstrap CSS link (replace with your specific Bootstrap version) -->
     <link rel="stylesheet" href="../templates/css/cart.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: black;
+        }
+
+        .container {
+            min-height: 100vh;
+            width: 1280px;
+            background-color: white;
+            margin: auto;
+            padding-top: 60px;
+        }
+
+        .backButton button{
+            width: 200px;
+            height: 60px;
+            border-radius: 30px;
+            margin-left: 110px;
+            margin-bottom: 60px;
+            background-color: #fb963c;
+            border: none;
+            display: flex;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .backButton button{
+            cursor: pointer;
+        }
+
+        .backButton button img {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .backButton button .addmore {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            width: 1120px;
+            height: 600px;
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        .container1 {
+            float: left;
+            width: 784px;
+            height: 100%;
+        }
+
+        .container1 .items {
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+            margin: auto;
+            margin-bottom: 60px;
+        }
+
+        .itemcontainer {
+            width: 30%;
+            height: 200px;
+            justify-content: center;
+        }
+
+        .item {
+            background-color: #ffe9c9;
+            border-radius: 20px;
+            width: 150px;
+            height: 115px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .delete-icon {
+            float: right;
+        }
+
+        .add-description {
+            width: 85%;
+            height: 300px;
+            border-radius: 20px;
+            flex: 1;
+            padding: 20px;
+            background-color: #ffe9c9;
+            margin-bottom: 60px;
+            margin-left: 40px;
+            border: none;
+        }
+
+        .paymentMethod {
+            width: 400px;
+            height: 50px;
+            background-color: #ffe9c9;
+            margin: auto;
+            border-radius: 50px;
+        }
+
+        #paymentMethods {
+            border: none;
+            background-color: inherit;
+            margin: 20px 150px;
+        }
+
+        .container2 {
+            float: right;
+            width: 336px;
+            height: 220px;
+            background-color: #fbfbfb;
+            box-shadow: #ccc;
+            border-radius: 30px;
+            padding: 20px;
+        }
+
+        .receipt {
+            width: 90%;
+            height: 190px;
+            justify-content: center;
+            padding: 10px;
+        }
+        .info{
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            margin-bottom: 60px;
+        }
+
+        .total {
+            flex:1;
+            text-align: start;
+            margin: auto;
+            font-weight: 700;
+            font-size: larger;
+        }
+
+        .amoumt {
+            flex:1;
+            text-align: end;
+            margin: auto;
+            font-weight: 700;
+            font-size: larger;
+
+        }
+
+        .orderButton button {
+            display: block;
+            padding: 10px;
+            background-color: #fb963c;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin: auto;
+            font-size: larger;
+            font-weight: 700;
+            width: 60%;
+            height: 60px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .logo {
+            width: 90%;
+            margin: auto;
+            justify-content: center;
+        }
+
+        .icon {
+            width: 250px;
+            height: 259px;
+            margin-top: 200px;
+            object-fit: cover;
+            margin-bottom: 60px;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -25,7 +212,7 @@
                     <div class="itemcontainer" th:each="cartItem : ${cartItems}" id="${cartItem.id}">
                         <div class="delete-icon" onclick="deleteItem()"><img src="delete.png" alt="delete-icon"></div>
 
-                        <<div class="itemcontainer" id="item1">
+                        <div class="itemcontainer" id="item1">
                             <div class="delete-icon" onclick="deleteItem('item1')"><img src="delete.png" alt="delete-icon"></div>
     
                             <div class="item">
