@@ -43,6 +43,10 @@ public class FoodController {
 
 
     ////Sign up role choose
+    @GetMapping("signup")
+    public String showSignUpPage() {
+        return "signup-role-choose";
+    }
 
     /////////////////////////////////Buyer
 
@@ -50,11 +54,11 @@ public class FoodController {
     @GetMapping("/buyer-signup")
     public String addABuyerSingupForm(Model model){
         model.addAttribute("buyer", new Buyer());
-        return "signup";
+        return "signup-form";
     }
 
     //to save buyer account
-    @PostMapping("/role-choose")
+    @PostMapping("/buyer-signup")
     public String saveBuyer(@ModelAttribute Buyer buyer){
         buyerRepo.save(buyer);
         return"login-role-choose";
@@ -137,11 +141,11 @@ public class FoodController {
     @GetMapping("/rider-signup")
     public String addARiderSingupForm(Model model){
         model.addAttribute("rider", new Rider());
-        return "signup";
+        return "signup-form";
     }
 
     //to save rider account
-    @PostMapping("/role-choose")
+    @PostMapping("/rider-signup")
     public String saveRider(@ModelAttribute Rider rider){
         riderRepo.save(rider);
         return"login-role-choose";
