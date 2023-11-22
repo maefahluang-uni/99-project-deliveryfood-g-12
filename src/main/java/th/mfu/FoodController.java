@@ -65,10 +65,18 @@ public class FoodController {
     }
 
     @Transactional
-    //to login for each type of user
-    @GetMapping("/login")
-    public String login(@PathVariable String email, String password) {
-        if(buyerRepo.existsByEmail(email) == true) {
+    //to login for buyer
+    @GetMapping("/buyer-login")
+    public String buyerLogin(@PathVariable String email, String password) {
+        Buyer buyer = buyerRepo.findByEmail(email);
+        if (buyer.getPassword().equals( password)) {
+                return "buyer-page";
+            }
+        return "login-role-choose";
+    
+        
+        
+        /*if(buyerRepo.existsByEmail(email) == true) {
             Buyer buyer = buyerRepo.findByEmail(email);
             if (buyer.getPassword().equals( password)) {
                 return "buyer-page";
@@ -84,7 +92,7 @@ public class FoodController {
         }
         else {
             return "login-role-choose";
-        }
+        }*/
     }
 
     //to show all shops for buyer to browse (same for showing discount, popular and delivery free items)
@@ -151,6 +159,15 @@ public class FoodController {
         return"login-role-choose";
     }
 
+    //to login for rider
+    @GetMapping("/rider-login")
+    public String riderLogin(@PathVariable String email, String password) {
+        Rider rider = riderRepo.findByEmail(email);
+        if (rider.getPassword().equals( password)) {
+                return "rider-page";
+            }
+        return "login-role-choose";
+        }
     //to show deliveries 
     /*@GetMapping("")
     public String showAllDeliveries(Model model) {
