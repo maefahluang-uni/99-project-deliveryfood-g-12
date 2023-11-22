@@ -113,7 +113,7 @@
 </head>
 
 <body>
-  <form th:action="@{/RoleChoosing}" th:object="${buyer}" method="post">
+  <form th:action="@{/rider-login}" th:object="${rider}" method="post">
     <div class="container"> 
       <div class="logo">
         <img src="logo.png">
@@ -127,8 +127,6 @@
         <i class='bx bxs-key' id="keyIcon"></i>
       </div>
     <button type="submit" class="btn">Login</button>
-    <p>Don't have an account? <a href="Role_Choosing2.html">Sign Up</a></p>
-</div>
   </form>
 </body>
 </html>
