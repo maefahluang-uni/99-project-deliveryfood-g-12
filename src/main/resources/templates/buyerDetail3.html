@@ -510,11 +510,11 @@
 
 <nav3>
   <a href="/start">
-    <img class="logout" src="images/logout.png" alt="logout">
+    <img class="logout" src="/static/images/logout.png" alt="logout">
   </a>
 
   <div class="cart-button" onclick="showcart()">
-    <img class="cart-icon" src="images/shopping-cart.png" alt="cart-icon">
+    <img class="cart-icon" src="/static/images/shopping-cart.png" alt="cart-icon">
   </div>
 
 </nav3>
@@ -523,7 +523,7 @@
 <div class="cart" id="cart">
   <div class="backButton" onclick="showcart()">
         <button type="button">
-            <img class="arrow" src="images/down-arrow 2.png" alt="down-arrow">
+            <img class="arrow" src="/static/images/down-arrow 2.png" alt="down-arrow">
             <span class="addmore">Add more</span>
         </button>
   </div>
@@ -563,7 +563,7 @@
           </div>
 
           <div class="logo">
-              <img src="images/LOGO.png" alt="our logo" class="icon">
+              <img src="/static/images/LOGO.png" alt="our logo" class="icon">
           </div>
           
       </div>
@@ -573,12 +573,12 @@
 <!--**********************-->
   <div class="menu">
     <div>
-      <img class="banner1" src="images/banner1.png" alt="banner1">
+      <img class="banner1" src="/static/images/banner1.png" alt="banner1">
     </div>
 
     <div class="backnshop">
       <a href="/buyer-page">
-        <img class="back" src="images/back.png" alt="back">
+        <img class="back" src="/static/images/back.png" alt="back">
       </a>
       <h1 class="shop_name">KFC (MAE FAH LUANG BRANCH)</h1>
     </div>
@@ -623,7 +623,7 @@ const categories = [...new Set(product.map((item)=>
         var {image, title, price} = item;
         return(
             `<div class="box" onclick='addtocart(`+(i++)+`)'>
-                <a href="#"><img class="basket" src="images/basket.png" alt="basket"></a>
+                <a href="#"><img class="basket" src="/static/images/basket.png" alt="basket"></a>
                 <span class="shape">
                 <img src=${image} alt="">
                 </span>
@@ -665,7 +665,7 @@ function displaycart(a){
             document.getElementById("total").innerHTML = "฿ " +total;
             return(
                 `<div class="itemcontainer" id="item1">
-                    <div class="delete-icon" onclick="deleteItem(`+(j++)+`)"><img src="images/delete.png"></div>
+                    <div class="delete-icon" onclick="deleteItem(`+(j++)+`)"><img src="/static/images/delete.png"></div>
                     <div class="item-">
                         <img src=${image} alt="">
                         <h5>${title}</h5>
