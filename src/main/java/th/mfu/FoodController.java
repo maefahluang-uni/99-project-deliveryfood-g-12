@@ -130,7 +130,8 @@ public class FoodController {
     }
 
     //to make order
-    @GetMapping("/buyers/{id}/orders")
+
+    @GetMapping("/buyers/{address}/orders")
     public String makeOrder(Model model, @PathVariable Long id) {
         Buyer buyer = buyerRepo.findById(id).get();
         CustOrder custOrder = new CustOrder();

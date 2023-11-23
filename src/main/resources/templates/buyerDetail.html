@@ -535,8 +535,9 @@
             <span style='font-size: 50px; margin-left: 145px;'>Your cart is empty!</span>
           </div>
 
-<!------->
-          <textarea class="add-description" placeholder="Add Description"></textarea>
+<!-------><form th:action="@{/check-address}" th:object="" method="post">
+            <textarea class="add-description" placeholder="Enter address" th:field="*{address}" required></textarea>
+          </form>
 
           <div class="paymentMethod">
               <select id="paymentMethods" name="payemntMethods">
