@@ -215,11 +215,11 @@ public class FoodController {
         }
     }
     //to show deliveries 
-    /*@GetMapping("")
+    @GetMapping("/rider-page")
     public String showAllDeliveries(Model model) {
-        model.addAttribute("orders", orderRepo.findAll());
-        return "";
-    }*/
+        model.addAttribute("orders", custOrderRepo.findAll());
+        return "rider";
+    }
 
     //to show delivery details
     @GetMapping("/delivery-detail")
