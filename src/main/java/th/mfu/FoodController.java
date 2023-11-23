@@ -24,8 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import th.mfu.Domain.Buyer;
+import th.mfu.Domain.CustOrder;
 import th.mfu.Domain.Rider;
-import th.mfu.Domain.custOrder;
+import th.mfu.Domain.CustOrder;
 import th.mfu.Domain.Item;
 
 @Controller
@@ -127,6 +128,26 @@ public class FoodController {
     public String showBuyerDetailPage3(Model model) {
         return "buyerDetail3";
     }
+
+    //to make order
+    @GetMapping("/buyers/{id}/orders")
+    public String makeOrder(Model model, @PathVariable Long id) {
+        Buyer buyer = buyerRepo.findById(id).get();
+        CustOrder custOrder = new CustOrder();
+        buyer.setCustOrder(custOrder);
+        model.addAttribute("neworder", custOrder);
+        return "thankYou";
+    }
+
+    //to save order
+    @PostMapping("/buyers/{id}/orders")
+    public String saveOrder(@ModelAttribute CustOrder neworder, @PathVariable Long id) {
+        Buyer buyer = buyerRepo.findById(id).get();
+        buyer.setCustOrder(neworder);
+        custOrderRepo.save(neworder);
+        return "redirect:/buyers/" + id + "/orders";
+    }
+
 
     //to show thankyou page
     @GetMapping("/thank-you")

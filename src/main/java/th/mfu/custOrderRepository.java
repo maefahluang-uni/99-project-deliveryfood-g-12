@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import th.mfu.Domain.custOrder;
+import th.mfu.Domain.CustOrder;
 
-public interface custOrderRepository extends CrudRepository<custOrder, Long>{
+public interface custOrderRepository extends CrudRepository<CustOrder, Long>{
 
     Object findAllById(Long id);
     

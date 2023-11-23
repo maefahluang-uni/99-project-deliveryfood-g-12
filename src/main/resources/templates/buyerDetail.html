@@ -554,9 +554,9 @@
               </div>
 
               <div class="orderButton">
-                  <a href="/thank-you">
+                  <form th:action="@{/buyers/{id}/orders(id=${neworder.buyer.id})}" th:object="${neworder}" method="post">
                       <button class="order">Order</button>
-                  </a>
+                  </form>
               </div>
           </div>
 

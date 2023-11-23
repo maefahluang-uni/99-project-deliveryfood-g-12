@@ -17,13 +17,13 @@ public class Rider {
     private String email;
      
     @OneToOne (cascade = CascadeType.ALL)
-    private custOrder custOrder;
+    private CustOrder custOrder;
 
-    public custOrder getCustOrder() {
+    public CustOrder getCustOrder() {
         return custOrder;
     }
 
-    public void setCustOrder(custOrder custOrder) {
+    public void setCustOrder(CustOrder custOrder) {
         this.custOrder = custOrder;
     }
 

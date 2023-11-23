@@ -19,15 +19,15 @@ public class Item {
     
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<custOrder> custOrders;
+    private List<CustOrder> custOrders;
 
 
-    public List<custOrder> getCustOrders() {
+    public List<CustOrder> getCustOrders() {
         return custOrders;
     }
 
 
-    public void setCustOrders(List<custOrder> custOrders) {
+    public void setCustOrders(List<CustOrder> custOrders) {
         this.custOrders = custOrders;
     }
 
