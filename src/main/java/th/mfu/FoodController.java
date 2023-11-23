@@ -118,6 +118,16 @@ public class FoodController {
         return "buyerDetail";
     }
 
+    @GetMapping("/buyer-detail2") 
+    public String showBuyerDetailPage2(Model model) {
+        return "buyerDetail2";
+    }
+
+    @GetMapping("/buyer-detail3") 
+    public String showBuyerDetailPage3(Model model) {
+        return "buyerDetail3";
+    }
+
     //to show thankyou page
     @GetMapping("/thank-you")
     public String showThankYouPage(Model model) {
@@ -215,7 +225,7 @@ public class FoodController {
     @GetMapping("/delivery-detail")
     // id is rider id
     public String showDeliveryDetails(@PathVariable Long id, Model model) {
-        model.addAttribute("deliveryDetails", orderRepo.findById(id));
-        return "";
+        model.addAttribute("deliveryDetails", custOrderRepo.findById(id));
+        return "destination";
     }
 }
