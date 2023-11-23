@@ -116,6 +116,8 @@ public class FoodController {
     //to show the menu of selected shop
     @GetMapping("/buyer-detail") 
     public String showBuyerDetailPage(Model model) {
+        model.addAttribute("buyer", new Buyer());
+        model.addAttribute("newOrder", new CustOrder());
         return "buyerDetail";
     }
 
@@ -131,30 +133,25 @@ public class FoodController {
 
     //to make order
 
-    @GetMapping("/buyers/{address}/orders")
-    public String makeOrder(Model model, @PathVariable Long id) {
-        Buyer buyer = buyerRepo.findById(id).get();
-        CustOrder custOrder = new CustOrder();
-        buyer.setCustOrder(custOrder);
-        model.addAttribute("neworder", custOrder);
-        return "thankYou";
+    @PostMapping("/make-order")
+    public String makeOrder(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
+        Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
+        if (buyer.getPassword().equals(existBuyer.getPassword())) {
+            //CustOrder neworder = new CustOrder();
+            existBuyer.setCustOrder(newOrder);
+            custOrderRepo.save(newOrder);
+            //will take to thank you page
+            return "thankYou";
+        }
+        //will take back to order detail page
+        return "buyerDetail";
     }
-
-    //to save order
-    @PostMapping("/buyers/{id}/orders")
-    public String saveOrder(@ModelAttribute CustOrder neworder, @PathVariable Long id) {
-        Buyer buyer = buyerRepo.findById(id).get();
-        buyer.setCustOrder(neworder);
-        custOrderRepo.save(neworder);
-        return "redirect:/buyers/" + id + "/orders";
-    }
-
 
     //to show thankyou page
-    @GetMapping("/thank-you")
+    /*@GetMapping("/thank-you")
     public String showThankYouPage(Model model) {
         return "thankYou";
-    }
+    }*/
     
 
     

@@ -535,9 +535,8 @@
             <span style='font-size: 50px; margin-left: 145px;'>Your cart is empty!</span>
           </div>
 
-<!-------><form th:action="@{/check-address}" th:object="" method="post">
-            <textarea class="add-description" placeholder="Enter address" th:field="*{address}" required></textarea>
-          </form>
+<!-------><textarea class="add-description" placeholder="Enter address"></textarea>
+          
 
           <div class="paymentMethod">
               <select id="paymentMethods" name="payemntMethods">
@@ -556,9 +555,9 @@
               </div>
 
               <div class="orderButton">
-                  <form th:action="@{/buyers/{id}/orders(id=${neworder.buyer.id})}" th:object="${neworder}" method="post">
+                  <form th:action="@{/make-order}" th:object="${buyer}" method="post">
                       <label>Confirm Order</label>
-                      <input type="password">
+                      <input type="password" th:field="*{password}" required>
                       <button class="order">Order</button>
                   </form>
               </div>

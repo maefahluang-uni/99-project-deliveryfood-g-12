@@ -11,5 +11,7 @@ public interface BuyerRepository extends CrudRepository<Buyer, Long>{
     boolean existsByEmail(String email);
 
     Buyer findByEmail(String email);
+
+    Buyer findByPassword(String password);
     
 }
