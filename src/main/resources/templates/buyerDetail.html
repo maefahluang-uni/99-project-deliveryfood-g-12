@@ -557,6 +557,8 @@
 
               <div class="orderButton">
                   <form th:action="@{/buyers/{id}/orders(id=${neworder.buyer.id})}" th:object="${neworder}" method="post">
+                      <label>Confirm Order</label>
+                      <input type="password">
                       <button class="order">Order</button>
                   </form>
               </div>
