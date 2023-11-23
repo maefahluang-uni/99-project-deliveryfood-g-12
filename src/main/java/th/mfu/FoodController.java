@@ -45,14 +45,8 @@ public class FoodController {
 
 
     ///show login or signup page
-    @GetMapping("/start-1")
+    @GetMapping("/start")
     public String showStartPage(Model model) {
-        return "choose-login-signup";
-    }
-
-
-    @GetMapping("/start-2")
-    public String showStartPage2(Model model) {
         return "choose-login-signup";
     }
 
@@ -67,6 +61,8 @@ public class FoodController {
     public String showLoginPage(Model model) {
         return "login-role-choose";
     }
+
+
 
     /////////////////////////////////Buyer
 
@@ -112,9 +108,22 @@ public class FoodController {
 
     //to show all shops for buyer to browse (same for showing discount, popular and delivery free items)
     @GetMapping("/buyer-page")
-    public String listSeller () {
+    public String showBuyerPage(Model model) {
         return "buyer";
     }
+
+    //to show the menu of selected shop
+    @GetMapping("/buyer-detail") 
+    public String showBuyerDetailPage(Model model) {
+        return "buyerDetail";
+    }
+
+    //to show thankyou page
+    @GetMapping("/thank-you")
+    public String showThankYouPage(Model model) {
+        return "thankYou";
+    }
+    
 
     
    //********************************************* */
@@ -203,10 +212,10 @@ public class FoodController {
     }*/
 
     //to show delivery details
-    /*@GetMapping("")
+    @GetMapping("/delivery-detail")
     // id is rider id
     public String showDeliveryDetails(@PathVariable Long id, Model model) {
         model.addAttribute("deliveryDetails", orderRepo.findById(id));
         return "";
-    }*/
+    }
 }
