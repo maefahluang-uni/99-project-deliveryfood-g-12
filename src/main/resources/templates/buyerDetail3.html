@@ -554,9 +554,11 @@
               </div>
 
               <div class="orderButton">
-                  <a href="/thank-you">
-                      <button class="order">Order</button>
-                  </a>
+                <form th:action="@{/make-order}" th:object="${buyer}" method="post">
+                    <label>Confirm Order</label>
+                    <input type="password" th:field="*{password}" required>
+                    <button class="order">Order</button>
+                </form>
               </div>
           </div>
 
@@ -627,7 +629,7 @@ const categories = [...new Set(product.map((item)=>
                 </span>
                 <div class="item">
                     <h5>${title}</h5>
-                    <h5>$ ${price}.00</h5>
+                    <h5>${price} Bhat</h5>
                 </div>
              </div>`
         )
@@ -667,7 +669,7 @@ function displaycart(a){
                     <div class="item-">
                         <img src=${image} alt="">
                         <h5>${title}</h5>
-                        <p>$ ${price}.00</p>`+
+                        <p>${price} Bhat</p>`+
                     `</div>
                 </div>`  
             )
