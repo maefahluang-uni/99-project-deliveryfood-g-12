@@ -4,7 +4,6 @@
     <link rel="icon" type="image/x-icon" href="../images/logo.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../templates/css/buyerDetail.css" rel="stylesheet">
     <style>
       @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
       html {
@@ -16,7 +15,7 @@
         margin: 0;
         padding: 0;
         /* make it look decent enough */
-        background: #ffff;
+        background: white;
         font-family: "Avenir Next", "Avenir", sans-serif;
         overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect,  */
         width: 1280px;
@@ -46,10 +45,8 @@
         display: block;
         position: absolute;
         top: 30px;
-        left: 50px;
-        
+        left: 50px;  
         z-index: 1;
-        
         -webkit-user-select: none;
         user-select: none;
       }
@@ -62,13 +59,10 @@
         height: 32px;
         position: absolute;
         top: -7px;
-        left: -5px;
-        
+        left: -5px;  
         cursor: pointer;
-        
         opacity: 0; /* hide this */
         z-index: 2; /* and place it over the hamburger */
-        
         -webkit-touch-callout: none;
       }
 
@@ -208,11 +202,6 @@
           line-height: normal;
       }
 
-      nav3 a {
-          text-decoration: none;
-          padding: 20px;
-      }
-
       .cart-icon {
           height: 40px;
           margin-bottom: 30px;
@@ -251,28 +240,21 @@
           margin-top: 60px;
       }
 
-      .items1 {
-        display: flex;
-        padding: 24px 80px;
-        justify-content: space-between;
-        margin-top: 80px;
-        gap: 32px;
-        width: max-width;
-      }
 
-      .items2 {
-        display: flex;
+      /*----------------------------------------*/
+
+      #root{
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         padding: 24px 80px;
-        justify-content: space-between;
         margin-top: 80px;
-        gap: 32px;
-        width: max-width;
+        margin-left: 35px
       }
 
       .basket {
         margin-left: 180px;
-        z-index: 1;
-        position: relative; 
+        position: absolute;
       }
 
       .shape {
@@ -285,9 +267,8 @@
       }
 
       .shape {
-        margin-top: -70px;
-        z-index: 0; /* set lower z-index value */
-        position: relative; /* position must be set for z-index to work */
+        margin-top: -10px;
+        position: relative;
       }
 
       .shape img {
@@ -298,6 +279,205 @@
       .item h5 {
         font-size: 24px;
       }
+
+      /**********************/
+      .cart {
+        width: 1280px;
+        height: 1000px;
+        background-color: white;
+        margin-top: -60px;
+        padding-top: 60px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+      }
+
+      .cart{
+        display: none;
+      }
+
+
+
+      .backButton button{
+        width: 200px;
+        height: 60px;
+        border-radius: 30px;
+        margin-left: 110px;
+        margin-bottom: 60px;
+        background-color: #fb963c;
+        border: none;
+        display: flex;
+        align-items: center;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .backButton button{
+        cursor: pointer;
+      }
+
+      .backButton button img {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .backButton button .addmore {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .content {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        width: 1120px;
+        height: 600px;
+        margin-bottom: 100px;
+        position: relative;
+      }
+
+      .container1 {
+        float: left;
+        width: 784px;
+        height: 100%;
+      }
+
+      .cartItems {
+        width: 90%;
+        display: block;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-around;
+        margin: auto;
+        margin-bottom: 60px;
+      }
+
+      .itemcontainer {
+        width: 30%;
+        height: 200px;
+      }
+
+      .item- {
+        background-color: #ffe9c9;
+        border-radius: 20px;
+        width: 150px;
+        height: 115px;
+        padding: 20px;
+        margin-top: -30px;
+      }
+
+      .item- img{
+        width: 90px;
+        margin-top: -10px;
+      }
+
+      .item- p{
+        margin-top: -20px;
+      }
+
+      .delete-icon {
+        margin-left: 170px;
+      }
+
+      .add-description {
+        width: 85%;
+        height: 300px;
+        border-radius: 20px;
+        flex: 1;
+        padding: 20px;
+        background-color: #ffe9c9;
+        margin-bottom: 60px;
+        margin-left: 40px;
+        border: none;
+      }
+
+      .paymentMethod {
+        width: 400px;
+        height: 50px;
+        background-color: #ffe9c9;
+        margin: auto;
+        border-radius: 50px;
+      }
+
+      #paymentMethods {
+        border: none;
+        background-color: inherit;
+        margin: 20px 150px;
+      }
+
+      .container2 {
+        float: right;
+        width: 336px;
+        height: 220px;
+        background-color: #fbfbfb;
+        box-shadow: #ccc;
+        border-radius: 30px;
+        padding: 20px;
+      }
+
+      .receipt {
+        width: 90%;
+        height: 190px;
+        justify-content: center;
+        padding: 10px;
+      }
+      .info{
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        margin-bottom: 60px;
+      }
+
+      .total {
+        flex:1;
+        text-align: start;
+        margin: auto;
+        font-weight: 700;
+        font-size: larger;
+      }
+
+      .amoumt {
+        flex:1;
+        text-align: end;
+        margin: auto;
+        font-weight: 700;
+        font-size: larger;
+
+      }
+
+      .orderButton button {
+        display: block;
+        padding: 10px;
+        background-color: #fb963c;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin: auto;
+        font-size: larger;
+        font-weight: 700;
+        width: 60%;
+        height: 60px;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      .logo {
+        width: 90%;
+        margin: auto;
+        justify-content: center;
+      }
+
+      .icon {
+        width: 250px;
+        height: 259px;
+        margin-top: 200px;
+        object-fit: cover;
+        margin-bottom: 60px;
+        border-radius: 50%;
+      }
+
     </style>
 </head>
   
@@ -313,9 +493,9 @@
       <span></span>
       
       <ul id="menu">
-        <a href="#"><img src="../buyer/discount.png" alt="discount"><li class="discount">Discount</li></a>
-        <a href="#"><img src="../buyer/popular.png" alt="popular"><li class="popular">Popular</li></a>
-        <a href="#"><img src="../buyer/free-delivery.png" alt="free-delivery"><li class="free-delivery">Free Delivery</li></a>
+        <a href="#"><img src="images/discount.png" alt="discount"><li class="discount">Discount</li></a>
+        <a href="#"><img src="images/popular.png" alt="popular"><li class="popular">Popular</li></a>
+        <a href="#"><img src="images/free-delivery.png" alt="free-delivery"><li class="free-delivery">Free Delivery</li></a>
       </ul>
 
 </nav>
@@ -330,118 +510,180 @@
 
 <nav3>
   <a href="../Login/Login.html">
-    <img class="logout" src="../buyer/logout.png" alt="logout">
+    <img class="logout" src="images/logout.png" alt="logout">
   </a>
 
-  <a href="../Cart/cart.html">
-    <img class="cart-icon" src="../buyer/shopping-cart.png" alt="cart-icon">
-  </a>
+  <div class="cart-button" onclick="showcart()">
+    <img class="cart-icon" src="images/shopping-cart.png" alt="cart-icon">
+  </div>
+
 </nav3>
 
-<div>
-  <img class="banner1" src="../buyerDetail/banner1.png" alt="banner1">
-</div>
-
-<div class="backnshop">
-  <a href="../buyer/buyer.html">
-    <img class="back" src="../buyerDetail/back.png" alt="back">
-  </a>
-  <h1 class="shop_name">KFC (MAE FAH LUANG BRANCH)</h1>
-</div>
-
-<!--Menu Items1-->
-<div class="items1">
-  <div class="itemcontainer" id="one">
-      <a href="#"><img class="basket" src="../buyerDetail/basket.png" alt="basket"></a>
-      <span class="shape">
-        <img src="../buyerDetail/chicken-rice-bowl.png" alt="chicken_rice_bowl">
-      </span>
-      <div class="item">
-          <h5>Chicken Rice Bowl</h5>
-          <h5>69 Baht</h5>
-      </div>
-  </div>
-  
-  <div class="itemcontainer" id="two">
-    <a href="#"><img class="basket" src="../buyerDetail/basket.png" alt="basket"></a>
-    <span class="shape">
-      <img src="../buyerDetail/chicken-pop-removebg-preview 1.png" alt="chicken_pop">
-    </span>
-      <div class="item">
-          <h5>Chicken Pop</h5>
-          <h5>129 Baht</h5>
-      </div>
+<!--- cart ---->
+<div class="cart" id="cart">
+  <div class="backButton" onclick="showcart()">
+        <button type="button">
+            <img class="arrow" src="images/down-arrow 2.png" alt="down-arrow">
+            <span class="addmore">Add more</span>
+        </button>
   </div>
 
-  <div class="itemcontainer" id="three">
-    <a href="#"><img class="basket" src="../buyerDetail/basket.png" alt="basket"></a>
-    <span class="shape">
-      <img src="../buyerDetail/classic-combo 1.png" alt="classic_combo">
-    </span>
-      <div class="item">
-          <h5>Classic Combo</h5>
-          <h5>129</h5>
+  <div class="content">
+      <div class="container1">
+          <div class="cartItems" id="cartItems">
+            <span style='font-size: 50px; margin-left: 145px;'>Your cart is empty!</span>
+          </div>
+
+<!------->
+          <textarea class="add-description" placeholder="Add Description"></textarea>
+
+          <div class="paymentMethod">
+              <select id="paymentMethods" name="payemntMethods">
+                  <option value="paymentmethod">Payment Method</option>
+                  <option value="bangkokBank">Bangkok Bank</option>
+                  <option value="kBank">K Bank</option>
+                  <option value="governmentBank">Government Bank</option>
+              </select>
+          </div>
       </div>
+      
+      <div class="container2">
+          <div class="receipt">
+              <div class="info">
+                  <p class="total">Total</p><p class="amount" id="total">฿ 150</p>
+              </div>
+
+              <div class="orderButton">
+                  <a href="../ThankYou/thankYou.html">
+                      <button class="order">Order</button>
+                  </a>
+              </div>
+          </div>
+
+          <div class="logo">
+              <img src="images/LOGO.png" alt="our logo" class="icon">
+          </div>
+          
+      </div>
+    </div>
   </div>
 
-  <div class="itemcontainer" id="four">
-    <a href="#"><img class="basket" src="../buyerDetail/basket.png" alt="basket"></a>
-    <span class="shape">
-      <img src="../buyerDetail/family-bucket-removebg-preview 1.png" alt="family_bucket">
-    </span>
-      <div class="item">
-          <h5>Family Bucket</h5>
-          <h5>619</h5>
-      </div>
-  </div>
-</div>
+<!--**********************-->
+  <div class="menu">
+    <div>
+      <img class="banner1" src="images/banner1.png" alt="banner1">
+    </div>
 
-<!--Menu Items2-->
-<div class="items1">
-  <div class="itemcontainer" id="five">
-      <a href="#"><img class="basket" src="../buyerDetail/basket.png" alt="basket"></a>
-      <span class="shape">
-        <img src="../buyerDetail/chick-n-roll 1.png" alt="chicken_rice_bowl">
-      </span>
-      <div class="item">
-          <h5>Chick 'N Roll</h5>
-          <h5>59 Baht</h5>
-      </div>
-  </div>
-  
-  <div class="itemcontainer" id="six">
-    <a href="#"><img class="basket" src="../buyerDetail/basket.png" alt="basket"></a>
-    <span class="shape">
-      <img src="../buyerDetail/chicken-bacon-burger-removebg-preview 1.png" alt="chicken_pop">
-    </span>
-      <div class="item">
-          <h5>Chicken Bacon Burger</h5>
-          <h5>89 Baht</h5>
-      </div>
+    <div class="backnshop">
+      <a href="../buyer/buyer.html">
+        <img class="back" src="images/back.png" alt="back">
+      </a>
+      <h1 class="shop_name">KFC (MAE FAH LUANG BRANCH)</h1>
+    </div>
+
+    <div id="root"></div>
   </div>
 
-  <div class="itemcontainer" id="seven">
-    <a href="#"><img class="basket" src="../buyerDetail/basket.png" alt="basket"></a>
-    <span class="shape">
-      <img src="../buyerDetail/spicy_chickent-removebg-preview 1.png" alt="classic_combo">
-    </span>
-      <div class="item">
-          <h5>Spicy Chicken</h5>
-          <h5>129</h5>
-      </div>
-  </div>
 
-  <div class="itemcontainer" id="eight">
-    <a href="#"><img class="basket" src="../buyerDetail/basket.png" alt="basket"></a>
-    <span class="shape">
-      <img src="../buyerDetail/snack-removebg-preview 1.png" alt="family_bucket">
-    </span>
-      <div class="item">
-          <h5>Snack Box</h5>
-          <h5>219</h5>
-      </div>
-  </div>
-</div>
+<script>
+  const product =[
+    {
+        id: 0,
+        image: 'images/chicken-rice-bowl.png',
+        title: 'Chicken Rice Bowl',
+        price: 69,
+    },
+    {
+        id: 1,
+        image: 'images/chicken-pop.png',
+        title: 'Chicken Pop',
+        price: 129,
+    },
+    {
+        id: 2,
+        image: 'image/cola.png',
+        title: 'Cola',
+        price: 230,
+    },
+    {
+        id: 3,
+        image: 'image/choco-ice-cream.jpg',
+        title: 'Ice Cream',
+        price: 100,
+    }
+];
 
+const categories = [...new Set(product.map((item)=>
+    {return item})) ]
+    let i = 0;
+    document.getElementById('root').innerHTML = categories.map((item)=>
+    {
+        var {image, title, price} = item;
+        return(
+            `<div class="box" onclick='addtocart(`+(i++)+`)'>
+                <a href="#"><img class="basket" src="images/basket.png" alt="basket"></a>
+                <span class="shape">
+                <img src=${image} alt="">
+                </span>
+                <div class="item">
+                    <h5>${title}</h5>
+                    <h5>$ ${price}.00</h5>
+                </div>
+             </div>`
+        )
+    }).join('')
+
+var cart=[];
+
+function addtocart(a){
+    cart.push({...categories[a]});
+    displaycart();
+}
+
+
+function deleteItem(a) {
+    cart.splice(a, 1);
+    displaycart();
+}
+
+
+function displaycart(a){
+    let j = 0; total = 0;
+    if(cart.length == 0){
+        document.getElementById("cartItems").style.display = "block";
+        document.getElementById("cartItems").innerHTML = "<span style='font-size: 50px; margin-left: 145px;'>Your cart is empty!</span>";
+        document.getElementById("total").innerHTML = "฿ " +0;
+    }
+    else{
+        document.getElementById("cartItems").innerHTML = cart.map((items)=>
+        {
+            var {image,title,price} = items;
+            total = total+price;
+            document.getElementById("cartItems").style.display = "grid";
+            document.getElementById("total").innerHTML = "฿ " +total;
+            return(
+                `<div class="itemcontainer" id="item1">
+                    <div class="delete-icon" onclick="deleteItem(`+(j++)+`)"><img src="images/delete.png"></div>
+                    <div class="item-">
+                        <img src=${image} alt="">
+                        <h5>${title}</h5>
+                        <p>$ ${price}.00</p>`+
+                    `</div>
+                </div>`  
+            )
+        }).join('');
+    }
+}
+
+
+function showcart(){
+    var cartshow = document.getElementById("cart");
+                if(cartshow.style.display == "block"){
+                    cartshow.style.display = "none";
+                } else {
+                    cartshow.style.display = "block";
+                }
+}
+</script>
 </body>
 </html>
