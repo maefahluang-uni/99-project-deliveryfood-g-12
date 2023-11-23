@@ -370,6 +370,7 @@
 
       .item- img{
         width: 90px;
+        height: 65px;
         margin-top: -10px;
       }
 
@@ -601,13 +602,13 @@
     },
     {
         id: 2,
-        image: 'image/cola.png',
+        image: 'images/classic-combo.png',
         title: 'Cola',
         price: 230,
     },
     {
         id: 3,
-        image: 'image/choco-ice-cream.jpg',
+        image: 'images/family-bucket.png',
         title: 'Ice Cream',
         price: 100,
     }
@@ -627,7 +628,7 @@ const categories = [...new Set(product.map((item)=>
                 </span>
                 <div class="item">
                     <h5>${title}</h5>
-                    <h5>$ ${price}.00</h5>
+                    <h5>${price} Bhat</h5>
                 </div>
              </div>`
         )
@@ -667,7 +668,7 @@ function displaycart(a){
                     <div class="item-">
                         <img src=${image} alt="">
                         <h5>${title}</h5>
-                        <p>$ ${price}.00</p>`+
+                        <p> ${price} Bhat</p>`+
                     `</div>
                 </div>`  
             )
