@@ -123,11 +123,15 @@ public class FoodController {
 
     @GetMapping("/buyer-detail2") 
     public String showBuyerDetailPage2(Model model) {
+        model.addAttribute("buyer", new Buyer());
+        model.addAttribute("newOrder", new CustOrder());
         return "buyerDetail2";
     }
 
     @GetMapping("/buyer-detail3") 
     public String showBuyerDetailPage3(Model model) {
+        model.addAttribute("buyer", new Buyer());
+        model.addAttribute("newOrder", new CustOrder());
         return "buyerDetail3";
     }
 
@@ -137,7 +141,6 @@ public class FoodController {
     public String makeOrder(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
         Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
         if (buyer.getPassword().equals(existBuyer.getPassword())) {
-            //CustOrder neworder = new CustOrder();
             existBuyer.setCustOrder(newOrder);
             custOrderRepo.save(newOrder);
             //will take to thank you page
@@ -145,6 +148,32 @@ public class FoodController {
         }
         //will take back to order detail page
         return "buyerDetail";
+    }
+
+    @PostMapping("/make-order2")
+    public String makeOrder2(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
+        Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
+        if (buyer.getPassword().equals(existBuyer.getPassword())) {
+            existBuyer.setCustOrder(newOrder);
+            custOrderRepo.save(newOrder);
+            //will take to thank you page
+            return "thankYou";
+        }
+        //will take back to order detail page
+        return "buyerDetail2";
+    }
+
+    @PostMapping("/make-order3")
+    public String makeOrder3(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
+        Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
+        if (buyer.getPassword().equals(existBuyer.getPassword())) {
+            existBuyer.setCustOrder(newOrder);
+            custOrderRepo.save(newOrder);
+            //will take to thank you page
+            return "thankYou";
+        }
+        //will take back to order detail page
+        return "buyerDetail3";
     }
 
     //to show thankyou page
