@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Buyer Detail</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+      html {
+        height: 100%;
+      }
+
+      body
+      {
+        margin: 0;
+        padding: 0;
+        /* make it look decent enough */
+        background: white;
+        font-family: "Avenir Next", "Avenir", sans-serif;
+        overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect,  */
+        width: 1280px;
+        /*height: 100vh;*/
+        margin: auto;
+      }
+
+      nav {
+          height: 80px;
+          background-color: #FB963C;
+      }
+
+      #menu a
+      {
+        text-decoration: none;
+        color: #232323;
+        transition: color 0.3s ease;
+      }
+
+      #menu a:hover
+      {
+        color: #FB963C;
+      }
+
+      #menuToggle
+      {
+        display: block;
+        position: absolute;
+        top: 30px;
+        left: 50px;  
+        z-index: 1;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      #menuToggle input
+      {
+        margin-left: 150px;
+        display: block;
+        width: 40px;
+        height: 32px;
+        position: absolute;
+        top: -7px;
+        left: -5px;  
+        cursor: pointer;
+        opacity: 0; /* hide this */
+        z-index: 2; /* and place it over the hamburger */
+        -webkit-touch-callout: none;
+      }
+
+      /*
+      * Just a quick hamburger
+      */
+      #menuToggle span
+      {
+        margin-left: 150px;
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+        
+        background: #000;
+        border-radius: 3px;
+        
+        z-index: 1;
+        
+        transform-origin: 4px 0px;
+        
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    opacity 0.55s ease;
+      }
+
+      #menuToggle span:first-child
+      {
+        transform-origin: 0% 0%;
+      }
+
+      #menuToggle span:nth-last-child(2)
+      {
+        transform-origin: 0% 100%;
+      }
+
+      /* 
+      * Transform all the slices of hamburger
+      * into a crossmark.
+      */
+      #menuToggle input:checked ~ span
+      {
+        opacity: 1;
+        transform: rotate(45deg) translate(-2px, -1px);
+        background: #232323;
+      }
+
+      /*
+      * But let's hide the middle one.
+      */
+      #menuToggle input:checked ~ span:nth-last-child(3)
+      {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+
+      /*
+      * Ohyeah and the last one should go the other direction
+      */
+      #menuToggle input:checked ~ span:nth-last-child(2)
+      {
+        opacity: 1;
+        transform: rotate(-45deg) translate(0, -1px);
+      }
+
+      #menu
+      {
+        position: absolute;
+        width: 300px;
+        height: 100vh;
+        margin: -100px 0 0 0;
+        margin-left: 150px;
+        padding: 50px;
+        padding-top: 125px;
+        left: -200px;  
+        background: #F6F6F6;
+        list-style-type: none;
+        -webkit-font-smoothing: antialiased;
+        /* to stop flickering of text in safari */
+        
+        transform-origin: 0% 0%;
+        transform: translate(-100%, 0);
+        
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+      }
+
+      #menu li, #menu a
+      {
+        padding: 10px 0;
+        font-size: 22px;
+        margin-bottom: 30px;
+      }
+
+      .discount {
+          margin-left: 45px;
+          margin-top: -40px;
+      }
+
+      .popular {
+          margin-left: 45px;
+          margin-top: -40px;
+      }
+
+      .free-delivery {
+          margin-left: 45px;
+          margin-top: -40px;
+      }
+      /*
+      * And let's fade it in from the left
+      */
+      #menuToggle input:checked ~ ul
+      {
+        transform: none;
+        opacity: 1;
+      }
+
+      .search {
+          margin-top: -80px;
+          margin-left: 400px;
+      }
+
+      .mainLoginInput {
+          margin-top: 15px;
+          border-radius: 1.25rem;
+          border:2px;
+          width: 400px;
+          height: 44px;
+          border: none;
+      }
+
+      .mainLoginInput::-webkit-input-placeholder {
+          color: rgba(0, 0, 0, 0.41);
+          font-size: 1.5rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+      }
+
+      .cart-icon {
+          height: 40px;
+          margin-bottom: 30px;
+          float: right;
+          position: relative;
+          margin-top: -40px;
+          margin-right: 40px;
+      }
+
+      .logout {
+          height: 50px;
+          margin-bottom: 30px;
+          float: right;
+          position: relative;
+          margin-top: -45px;
+          margin-right: 60px;
+      }
+
+      .banner1 {
+          margin-top: 50px;
+          margin-left: 75px;
+          width: 90%;
+      }
+
+      .backnshop {
+          display: flex;
+      }
+
+      .back {
+          margin-left: 75px;
+          margin-top: 50px;
+      }
+
+      .shop_name {
+          margin-left: 20px;
+          margin-top: 60px;
+      }
+
+
+      /*----------------------------------------*/
+
+      #root{
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 24px 80px;
+        margin-top: 80px;
+        margin-left: 35px
+      }
+
+      .basket {
+        margin-left: 180px;
+        position: absolute;
+      }
+
+      .shape {
+        width: 200px;
+        height: 250px;
+        display: block;
+        background-color: #fff;
+        filter: drop-shadow(5px 10px 4px #b2b2b6);
+        border-radius: 100px 100px 0 0;
+      }
+
+      .shape {
+        margin-top: -10px;
+        position: relative;
+      }
+
+      .shape img {
+        width: 200px;
+        margin-top: 50px;
+      }
+
+      .item h5 {
+        font-size: 24px;
+      }
+
+      /**********************/
+      .cart {
+        width: 1280px;
+        height: 1000px;
+        background-color: white;
+        margin-top: -60px;
+        padding-top: 60px;
+        position: absolute;
+        z-index: 1;
+        display: block;
+      }
+
+      .cart{
+        display: none;
+      }
+
+
+
+      .backButton button{
+        width: 200px;
+        height: 60px;
+        border-radius: 30px;
+        margin-left: 110px;
+        margin-bottom: 60px;
+        background-color: #fb963c;
+        border: none;
+        display: flex;
+        align-items: center;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .backButton button{
+        cursor: pointer;
+      }
+
+      .backButton button img {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .backButton button .addmore {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .content {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        width: 1120px;
+        height: 600px;
+        margin-bottom: 100px;
+        position: relative;
+      }
+
+      .container1 {
+        float: left;
+        width: 784px;
+        height: 100%;
+      }
+
+      .cartItems {
+        width: 90%;
+        display: block;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-around;
+        margin: auto;
+        margin-bottom: 60px;
+      }
+
+      .itemcontainer {
+        width: 30%;
+        height: 200px;
+      }
+
+      .item- {
+        background-color: #ffe9c9;
+        border-radius: 20px;
+        width: 150px;
+        height: 115px;
+        padding: 20px;
+        margin-top: -30px;
+      }
+
+      .item- img{
+        width: 90px;
+        margin-top: -10px;
+      }
+
+      .item- p{
+        margin-top: -20px;
+      }
+
+      .delete-icon {
+        margin-left: 170px;
+      }
+
+      .add-description {
+        width: 85%;
+        height: 300px;
+        border-radius: 20px;
+        flex: 1;
+        padding: 20px;
+        background-color: #ffe9c9;
+        margin-bottom: 60px;
+        margin-left: 40px;
+        border: none;
+      }
+
+      .paymentMethod {
+        width: 400px;
+        height: 50px;
+        background-color: #ffe9c9;
+        margin: auto;
+        border-radius: 50px;
+      }
+
+      #paymentMethods {
+        border: none;
+        background-color: inherit;
+        margin: 20px 150px;
+      }
+
+      .container2 {
+        float: right;
+        width: 336px;
+        height: 220px;
+        background-color: #fbfbfb;
+        box-shadow: #ccc;
+        border-radius: 30px;
+        padding: 20px;
+      }
+
+      .receipt {
+        width: 90%;
+        height: 190px;
+        justify-content: center;
+        padding: 10px;
+      }
+      .info{
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        margin-bottom: 60px;
+      }
+
+      .total {
+        flex:1;
+        text-align: start;
+        margin: auto;
+        font-weight: 700;
+        font-size: larger;
+      }
+
+      .amoumt {
+        flex:1;
+        text-align: end;
+        margin: auto;
+        font-weight: 700;
+        font-size: larger;
+
+      }
+
+      .orderButton button {
+        display: block;
+        padding: 10px;
+        background-color: #fb963c;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin: auto;
+        font-size: larger;
+        font-weight: 700;
+        width: 60%;
+        height: 60px;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      .logo {
+        width: 90%;
+        margin: auto;
+        justify-content: center;
+      }
+
+      .icon {
+        width: 250px;
+        height: 259px;
+        margin-top: 200px;
+        object-fit: cover;
+        margin-bottom: 60px;
+        border-radius: 50%;
+      }
+
+    </style>
+</head>
+  
+<body>
+<nav role='navigation'>
+  <!--Hamburger Menu Thing-->
+    <div id="menuToggle">
+
+      <input type="checkbox"/>
+      
+      <span></span>
+      <span></span>
+      <span></span>
+      
+      <ul id="menu">
+        <a href="#"><img src="images/discount.png" alt="discount"><li class="discount">Discount</li></a>
+        <a href="#"><img src="images/popular.png" alt="popular"><li class="popular">Popular</li></a>
+        <a href="#"><img src="images/free-delivery.png" alt="free-delivery"><li class="free-delivery">Free Delivery</li></a>
+      </ul>
+
+</nav>
+
+<!--Search Box, Cart and Logout-->
+<nav2>
+  <div class="search">
+    <input class="mainLoginInput" type="text" placeholder="&#xF002; What are you craving for..." style="font-family:Urbanist, FontAwesome"/><br/>
+  </div>
+</div>
+</nav2>
+
+<nav3>
+  <a href="/start">
+    <img class="logout" src="images/logout.png" alt="logout">
+  </a>
+
+  <div class="cart-button" onclick="showcart()">
+    <img class="cart-icon" src="images/shopping-cart.png" alt="cart-icon">
+  </div>
+
+</nav3>
+
+<!--- cart ---->
+<div class="cart" id="cart">
+  <div class="backButton" onclick="showcart()">
+        <button type="button">
+            <img class="arrow" src="images/down-arrow 2.png" alt="down-arrow">
+            <span class="addmore">Add more</span>
+        </button>
+  </div>
+
+  <div class="content">
+      <div class="container1">
+          <div class="cartItems" id="cartItems">
+            <span style='font-size: 50px; margin-left: 145px;'>Your cart is empty!</span>
+          </div>
+
+<!------->
+          <textarea class="add-description" placeholder="Add Description"></textarea>
+
+          <div class="paymentMethod">
+              <select id="paymentMethods" name="payemntMethods">
+                  <option value="paymentmethod">Payment Method</option>
+                  <option value="bangkokBank">Bangkok Bank</option>
+                  <option value="kBank">K Bank</option>
+                  <option value="governmentBank">Government Bank</option>
+              </select>
+          </div>
+      </div>
+      
+      <div class="container2">
+          <div class="receipt">
+              <div class="info">
+                  <p class="total">Total</p><p class="amount" id="total">฿ 150</p>
+              </div>
+
+              <div class="orderButton">
+                  <a href="/thank-you">
+                      <button class="order">Order</button>
+                  </a>
+              </div>
+          </div>
+
+          <div class="logo">
+              <img src="images/LOGO.png" alt="our logo" class="icon">
+          </div>
+          
+      </div>
+    </div>
+  </div>
+
+<!--**********************-->
+  <div class="menu">
+    <div>
+      <img class="banner1" src="images/banner1.png" alt="banner1">
+    </div>
+
+    <div class="backnshop">
+      <a href="/buyer-page">
+        <img class="back" src="images/back.png" alt="back">
+      </a>
+      <h1 class="shop_name">KFC (MAE FAH LUANG BRANCH)</h1>
+    </div>
+
+    <div id="root"></div>
+  </div>
+
+
+<script>
+  const product =[
+    {
+        id: 0,
+        image: 'images/chicken-rice-bowl.png',
+        title: 'Chicken Rice Bowl',
+        price: 69,
+    },
+    {
+        id: 1,
+        image: 'images/chicken-pop.png',
+        title: 'Chicken Pop',
+        price: 129,
+    },
+    {
+        id: 2,
+        image: 'image/cola.png',
+        title: 'Cola',
+        price: 230,
+    },
+    {
+        id: 3,
+        image: 'image/choco-ice-cream.jpg',
+        title: 'Ice Cream',
+        price: 100,
+    }
+];
+
+const categories = [...new Set(product.map((item)=>
+    {return item})) ]
+    let i = 0;
+    document.getElementById('root').innerHTML = categories.map((item)=>
+    {
+        var {image, title, price} = item;
+        return(
+            `<div class="box" onclick='addtocart(`+(i++)+`)'>
+                <a href="#"><img class="basket" src="images/basket.png" alt="basket"></a>
+                <span class="shape">
+                <img src=${image} alt="">
+                </span>
+                <div class="item">
+                    <h5>${title}</h5>
+                    <h5>$ ${price}.00</h5>
+                </div>
+             </div>`
+        )
+    }).join('')
+
+var cart=[];
+
+function addtocart(a){
+    cart.push({...categories[a]});
+    displaycart();
+}
+
+
+function deleteItem(a) {
+    cart.splice(a, 1);
+    displaycart();
+}
+
+
+function displaycart(a){
+    let j = 0; total = 0;
+    if(cart.length == 0){
+        document.getElementById("cartItems").style.display = "block";
+        document.getElementById("cartItems").innerHTML = "<span style='font-size: 50px; margin-left: 145px;'>Your cart is empty!</span>";
+        document.getElementById("total").innerHTML = "฿ " +0;
+    }
+    else{
+        document.getElementById("cartItems").innerHTML = cart.map((items)=>
+        {
+            var {image,title,price} = items;
+            total = total+price;
+            document.getElementById("cartItems").style.display = "grid";
+            document.getElementById("total").innerHTML = "฿ " +total;
+            return(
+                `<div class="itemcontainer" id="item1">
+                    <div class="delete-icon" onclick="deleteItem(`+(j++)+`)"><img src="images/delete.png"></div>
+                    <div class="item-">
+                        <img src=${image} alt="">
+                        <h5>${title}</h5>
+                        <p>$ ${price}.00</p>`+
+                    `</div>
+                </div>`  
+            )
+        }).join('');
+    }
+}
+
+
+function showcart(){
+    var cartshow = document.getElementById("cart");
+                if(cartshow.style.display == "block"){
+                    cartshow.style.display = "none";
+                } else {
+                    cartshow.style.display = "block";
+                }
+}
+</script>
+</body>
+</html>
