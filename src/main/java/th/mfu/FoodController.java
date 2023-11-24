@@ -139,7 +139,7 @@ public class FoodController {
 
     @PostMapping("/make-order")
     public String makeOrder(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
-    Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
+    Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword()); //change to input username or something
 
     if (existBuyer != null && buyer.getPassword().equals(existBuyer.getPassword())) { //resolved null pointerexcepting thingy
         existBuyer.setCustOrder(newOrder);
