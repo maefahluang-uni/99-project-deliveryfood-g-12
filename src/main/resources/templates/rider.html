@@ -255,15 +255,17 @@
 
         <div class="orders-list-container">
             <div class="order-lists"  th:each="custOrder : ${custOrders}">
+                
                 <div class="circle">
-                    <a href="/delivery-detail">
+                    <a th:href="@{/rider-page/destination/{id}(id=${custOrder.id})}">
                         <img class="user-icon" src="images/user 4.png" alt="">  
                     </a>                  
                 </div>
+                
                 <div class="order-lists-text" >
                     <ul>
                         <li class="orderNo" th:text="${custOrder.id}"></li>
-
+                        <li class="cusNo" th:text="${custOrder.buyer.name}"></li>
                     </ul>
                 </div>
             </div>
