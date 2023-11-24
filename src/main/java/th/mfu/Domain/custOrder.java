@@ -20,8 +20,19 @@ public class CustOrder {
     @OneToOne(cascade = CascadeType.ALL)
     private Rider rider;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Buyer buyer;
+
     public Long getId() {
         return id;
+    }
+
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
     }
 
     public void setId(Long id) {

@@ -23,8 +23,7 @@ public class Buyer {
     private String email;
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private CustOrder custOrder;
+   
 
     public long getId() {
         return Id;
@@ -56,14 +55,6 @@ public class Buyer {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public CustOrder getCustOrder() {
-        return custOrder;
-    }
-
-    public void setCustOrder(CustOrder custOrder) {
-        this.custOrder = custOrder;
     }
 
         

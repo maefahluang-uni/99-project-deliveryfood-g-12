@@ -138,7 +138,7 @@ public class FoodController {
     Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword()); //change to input username or something
 
     if (existBuyer != null) { //resolved null pointerexcepting thingy( && buyer.getPassword().equals(existBuyer.getPassword()) )
-        existBuyer.setCustOrder(newOrder);
+        newOrder.setBuyer(existBuyer);
         custOrderRepo.save(newOrder);
         // will take to thank you page
         return "thankYou";
@@ -153,7 +153,7 @@ public class FoodController {
     public String makeOrder2(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
     Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
     if (existBuyer != null) { 
-            existBuyer.setCustOrder(newOrder);
+            newOrder.setBuyer(existBuyer);
             custOrderRepo.save(newOrder);
             //will take to thank you page
             return "thankYou";
@@ -166,7 +166,7 @@ public class FoodController {
     public String makeOrder3(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
     Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
     if (existBuyer != null) { 
-            existBuyer.setCustOrder(newOrder);
+            newOrder.setBuyer(existBuyer);
             custOrderRepo.save(newOrder);
             //will take to thank you page
             return "thankYou";
@@ -252,7 +252,8 @@ public class FoodController {
         if(riderRepo.existsByEmail(rider.getEmail())==true){
             Rider existRider = riderRepo.findByEmail(rider.getEmail());
             if (rider.getPassword().equals(existRider.getPassword())) {
-                return "testing_rider"; //rider
+                    model.addAttribute("custOrders", custOrderRepo.findAll());
+                return "rider"; //rider
             }
             else {
                 return "login-role-choose";
@@ -268,6 +269,13 @@ public class FoodController {
         return "rider"; //rider
     }
 
+    @GetMapping("/rider-page/destination/{custOrderId}")
+    public String showDestination(@PathVariable long custOrderId, Model model){
+        CustOrder custOrder = custOrderRepo.findById(custOrderId).get();
+        model.addAttribute("custOrder", custOrder);
+        return "destination";
+    }
+    
     //to show delivery details
     /*@GetMapping("/rider-page/orders/{orderId}")
     // id is rider id
