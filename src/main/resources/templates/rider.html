@@ -253,8 +253,8 @@
             </span>
         </div>
 
-        <div class="orders-list-container" th:each="order : ${orders}">
-            <div class="order-lists" >
+        <div class="orders-list-container">
+            <div class="order-lists"  th:each="custOrder : ${custOrders}">
                 <div class="circle">
                     <a href="/delivery-detail">
                         <img class="user-icon" src="images/user 4.png" alt="">  
@@ -262,8 +262,8 @@
                 </div>
                 <div class="order-lists-text" >
                     <ul>
-                        <li class="orderNo" th:text="${order.id}"></li>
-                        <li class="cusNo" th:text="${order.buyer.name}"></li>
+                        <li class="orderNo" th:text="${custOrder.id}"></li>
+
                     </ul>
                 </div>
             </div>

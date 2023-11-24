@@ -15,7 +15,10 @@ import javax.persistence.OneToOne;
 public class CustOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; 
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Rider rider;
 
     public Long getId() {
         return id;
@@ -23,6 +26,14 @@ public class CustOrder {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Rider getRider() {
+        return rider;
+    }
+
+    public void setRider(Rider rider) {
+        this.rider = rider;
     }
         
 }
