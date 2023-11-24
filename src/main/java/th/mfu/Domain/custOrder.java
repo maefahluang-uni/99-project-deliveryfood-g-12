@@ -1,4 +1,5 @@
 package th.mfu.Domain;
+
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -11,10 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class custOrder {
+public class CustOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; 
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Rider rider;
 
     public Long getId() {
         return id;
@@ -22,6 +26,14 @@ public class custOrder {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Rider getRider() {
+        return rider;
+    }
+
+    public void setRider(Rider rider) {
+        this.rider = rider;
     }
         
 }

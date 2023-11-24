@@ -167,7 +167,7 @@
             height: auto;
             background-color: #FB963C;
             margin: auto;
-            border-radius: 80px 80px 0px 0px;
+            border-radius: 80px;
         }
         
         .order-lists{
@@ -178,6 +178,7 @@
             display: inline-flex;
             margin-left: 97px;
             margin-top: 113px;
+            margin-bottom: 113px;
         }
         
         .circle{
@@ -253,42 +254,16 @@
         </div>
 
         <div class="orders-list-container">
-            <div class="order-lists">
+            <div class="order-lists"  th:each="custOrder : ${custOrders}">
                 <div class="circle">
-                    <a href="http://127.0.0.1:5500/src/main/resources/templates/Destination/destination.html">
+                    <a href="/delivery-detail">
                         <img class="user-icon" src="images/user 4.png" alt="">  
                     </a>                  
                 </div>
-                <div class="order-lists-text">
+                <div class="order-lists-text" >
                     <ul>
-                        <li class="orderNo">Order #144</li>
-                        <li class="cusNo">Customer_001</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="order-lists">
-                <div class="circle">
-                    <a href="http://127.0.0.1:5500/src/main/resources/templates/Destination/destination.html">
-                        <img class="user-icon" src="images/user 4.png" alt="">  
-                    </a>  
-                </div>
-                <div class="order-lists-text">
-                    <ul>
-                        <li class="orderNo">Order #144</li>
-                        <li class="cusNo">Customer_001</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="order-lists">
-                <div class="circle">
-                    <a href="http://127.0.0.1:5500/src/main/resources/templates/Destination/destination.html">
-                        <img class="user-icon" src="images/user 4.png" alt="">   
-                    </a>  
-                </div>
-                <div class="order-lists-text">
-                    <ul>
-                        <li class="orderNo">Order #144</li>
-                        <li class="cusNo">Customer_001</li>
+                        <li class="orderNo" th:text="${custOrder.id}"></li>
+
                     </ul>
                 </div>
             </div>

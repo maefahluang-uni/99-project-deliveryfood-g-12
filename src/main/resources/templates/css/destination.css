@@ -82,7 +82,7 @@ a{
 .location{
     width: 401px;
     height: 116px;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-left: 37px;
     display: flex;
 }
@@ -92,7 +92,7 @@ a{
     height: 116px;
 }
 
-.ellipse1, .ellipse6{
+.ellipse1{
     width: 15px;
     height: 15px;
     border-radius: 100px;
@@ -107,29 +107,10 @@ a{
     margin-top: 7px;
 }
 
-.ellipse2, .ellipse3, .ellipse4, .ellipse5{
-    width: 5px;
-    height: 5px;
-    border-radius: 100px;
-    background-color: #FFE9C9;
-    margin-left: 5px;
-}
-
-.ellipse2{
-    margin-top: 15px;
-}
-
-.ellipse3{
-    margin-top: 16px;
-}
-
-.ellipse4, .ellipse5{
-    margin-top: 5px;
-}
-
 .ellipse-text{
     width: 364px;
     height: 116px;
+    margin-top: 5px;
 }
 
 .begin{
@@ -160,7 +141,7 @@ a{
 .bahtKm{
     width: 265px;
     height: 135px;
-    margin-top: 9px;
+    margin-top: 29px;
     margin-right: 37px;
 }
 

@@ -24,7 +24,7 @@ public class Buyer {
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private custOrder custOrder;
+    private CustOrder custOrder;
 
     public long getId() {
         return Id;
@@ -58,11 +58,11 @@ public class Buyer {
         this.password = password;
     }
 
-    public custOrder getCustOrder() {
+    public CustOrder getCustOrder() {
         return custOrder;
     }
 
-    public void setCustOrder(custOrder custOrder) {
+    public void setCustOrder(CustOrder custOrder) {
         this.custOrder = custOrder;
     }
 

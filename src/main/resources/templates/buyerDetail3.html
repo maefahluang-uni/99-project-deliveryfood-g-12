@@ -370,7 +370,6 @@
 
       .item- img{
         width: 90px;
-        height: 65px;
         margin-top: -10px;
       }
 
@@ -463,7 +462,7 @@
         border-radius: 20px;
         cursor: pointer;
       }
-      
+
       .logo {
         width: 90%;
         margin: auto;
@@ -494,9 +493,9 @@
       <span></span>
       
       <ul id="menu">
-        <a href="#"><img src="/static/images/discount.png" alt="discount"><li class="discount">Discount</li></a>
-        <a href="#"><img src="/static/images/popular.png" alt="popular"><li class="popular">Popular</li></a>
-        <a href="#"><img src="/static/images/free-delivery.png" alt="free-delivery"><li class="free-delivery">Free Delivery</li></a>
+        <a href="#"><img src="images/discount.png" alt="discount"><li class="discount">Discount</li></a>
+        <a href="#"><img src="images/popular.png" alt="popular"><li class="popular">Popular</li></a>
+        <a href="#"><img src="images/free-delivery.png" alt="free-delivery"><li class="free-delivery">Free Delivery</li></a>
       </ul>
 
 </nav>
@@ -535,8 +534,8 @@
             <span style='font-size: 50px; margin-left: 145px;'>Your cart is empty!</span>
           </div>
 
-<!-------><textarea class="add-description" placeholder="Enter address"></textarea>
-          
+<!------->
+          <textarea class="add-description" placeholder="Add Description"></textarea>
 
           <div class="paymentMethod">
               <select id="paymentMethods" name="payemntMethods">
@@ -551,20 +550,20 @@
       <div class="container2">
           <div class="receipt">
               <div class="info">
-                  <p class="total">Total</p><p class="amount" id="total">฿ 0</p>
+                  <p class="total">Total</p><p class="amount" id="total">฿ 150</p>
               </div>
 
               <div class="orderButton">
-                  <form th:action="@{/make-order}" th:object="${buyer}" method="post">
-                      <label>Confirm Order</label>
-                      <input type="password" th:field="*{password}" required>
-                      <button class="order">Order</button>
-                  </form>
+                <form th:action="@{/make-order}" th:object="${buyer}" method="post">
+                    <label>Confirm Order</label>
+                    <input type="password" th:field="*{password}" required>
+                    <button class="order">Order</button>
+                </form>
               </div>
           </div>
 
           <div class="logo">
-              <img src="images/LOGO.png" alt="our logo" class="icon">
+              <img src="/static/images/LOGO.png" alt="our logo" class="icon">
           </div>
           
       </div>
@@ -574,7 +573,7 @@
 <!--**********************-->
   <div class="menu">
     <div>
-      <img class="banner1" src="../static/images/banner1.png" alt="banner1">
+      <img class="banner1" src="/static/images/banner1.png" alt="banner1">
     </div>
 
     <div class="backnshop">
@@ -592,25 +591,25 @@
   const product =[
     {
         id: 0,
-        image: '/static/images/chicken-rice-bowl.png',
+        image: 'images/chicken-rice-bowl.png',
         title: 'Chicken Rice Bowl',
         price: 69,
     },
     {
         id: 1,
-        image: '/static/images/chicken-pop.png',
+        image: 'images/chicken-pop.png',
         title: 'Chicken Pop',
         price: 129,
     },
     {
         id: 2,
-        image: '/static/images/classic-combo.png',
+        image: 'image/cola.png',
         title: 'Cola',
         price: 230,
     },
     {
         id: 3,
-        image: '/static/images/family-bucket.png',
+        image: 'image/choco-ice-cream.jpg',
         title: 'Ice Cream',
         price: 100,
     }
@@ -670,7 +669,7 @@ function displaycart(a){
                     <div class="item-">
                         <img src=${image} alt="">
                         <h5>${title}</h5>
-                        <p> ${price} Bhat</p>`+
+                        <p>${price} Bhat</p>`+
                     `</div>
                 </div>`  
             )
@@ -681,13 +680,12 @@ function displaycart(a){
 
 function showcart(){
     var cartshow = document.getElementById("cart");
-        if(cartshow.style.display == "block"){
-            cartshow.style.display = "none";
-        } else {
-            cartshow.style.display = "block";
-        }
+                if(cartshow.style.display == "block"){
+                    cartshow.style.display = "none";
+                } else {
+                    cartshow.style.display = "block";
+                }
 }
-
 </script>
 </body>
 </html>

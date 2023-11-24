@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import th.mfu.Domain.Buyer;
+import th.mfu.Domain.CustOrder;
 import th.mfu.Domain.Rider;
-import th.mfu.Domain.custOrder;
-import th.mfu.Domain.Item;
+import th.mfu.Domain.CustOrder;
 
 @Controller
 public class FoodController {
@@ -38,21 +38,12 @@ public class FoodController {
     RiderRepository riderRepo;
 
     @Autowired
-    ItemRepository itemRepo;
-
-    @Autowired
     custOrderRepository custOrderRepo;
 
 
     ///show login or signup page
-    @GetMapping("/start-1")
+    @GetMapping("/start")
     public String showStartPage(Model model) {
-        return "choose-login-signup";
-    }
-
-
-    @GetMapping("/start-2")
-    public String showStartPage2(Model model) {
         return "choose-login-signup";
     }
 
@@ -67,6 +58,8 @@ public class FoodController {
     public String showLoginPage(Model model) {
         return "login-role-choose";
     }
+
+
 
     /////////////////////////////////Buyer
 
@@ -99,7 +92,7 @@ public class FoodController {
         if(buyerRepo.existsByEmail(buyer.getEmail())==true){
             Buyer existBuyer = buyerRepo.findByEmail(buyer.getEmail());
             if (buyer.getPassword().equals(existBuyer.getPassword())) {
-                return"buyer.html";
+                return"buyer";
             }
             else {
                 return "login-role-choose";
@@ -112,9 +105,82 @@ public class FoodController {
 
     //to show all shops for buyer to browse (same for showing discount, popular and delivery free items)
     @GetMapping("/buyer-page")
-    public String listSeller () {
+    public String showBuyerPage(Model model) {
         return "buyer";
     }
+
+    //to show the menu of selected shop
+    @GetMapping("/buyer-detail") 
+    public String showBuyerDetailPage(Model model) {
+        model.addAttribute("buyer", new Buyer());
+        model.addAttribute("newOrder", new CustOrder());
+        return "buyerDetail";
+    }
+
+    @GetMapping("/buyer-detail2") 
+    public String showBuyerDetailPage2(Model model) {
+        model.addAttribute("buyer", new Buyer());
+        model.addAttribute("newOrder", new CustOrder());
+        return "buyerDetail2";
+    }
+
+    @GetMapping("/buyer-detail3") 
+    public String showBuyerDetailPage3(Model model) {
+        model.addAttribute("buyer", new Buyer());
+        model.addAttribute("newOrder", new CustOrder());
+        return "buyerDetail3";
+    }
+
+    //to make order
+
+    @PostMapping("/make-order")
+    public String makeOrder(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
+    Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword()); //change to input username or something
+
+    if (existBuyer != null) { //resolved null pointerexcepting thingy( && buyer.getPassword().equals(existBuyer.getPassword()) )
+        existBuyer.setCustOrder(newOrder);
+        custOrderRepo.save(newOrder);
+        // will take to thank you page
+        return "thankYou";
+    }
+
+    // will take back to order detail page
+    return "buyerDetail";
+}
+
+
+    @PostMapping("/make-order2")
+    public String makeOrder2(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
+    Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
+    if (existBuyer != null) { 
+            existBuyer.setCustOrder(newOrder);
+            custOrderRepo.save(newOrder);
+            //will take to thank you page
+            return "thankYou";
+        }
+        //will take back to order detail page
+        return "buyerDetail2";
+    }
+
+    @PostMapping("/make-order3")
+    public String makeOrder3(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
+    Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
+    if (existBuyer != null) { 
+            existBuyer.setCustOrder(newOrder);
+            custOrderRepo.save(newOrder);
+            //will take to thank you page
+            return "thankYou";
+        }
+        //will take back to order detail page
+        return "buyerDetail3";
+    }
+
+    //to show thankyou page
+    /*@GetMapping("/thank-you")
+    public String showThankYouPage(Model model) {
+        return "thankYou";
+    }*/
+    
 
     
    //********************************************* */
@@ -186,7 +252,7 @@ public class FoodController {
         if(riderRepo.existsByEmail(rider.getEmail())==true){
             Rider existRider = riderRepo.findByEmail(rider.getEmail());
             if (rider.getPassword().equals(existRider.getPassword())) {
-                return"rider.html";
+                return "testing_rider"; //rider
             }
             else {
                 return "login-role-choose";
@@ -196,17 +262,19 @@ public class FoodController {
         }
     }
     //to show deliveries 
-    /*@GetMapping("")
+    @GetMapping("/rider-page") //rider-page
     public String showAllDeliveries(Model model) {
-        model.addAttribute("orders", orderRepo.findAll());
-        return "";
-    }*/
+        model.addAttribute("custOrders", custOrderRepo.findAll());
+        return "rider"; //rider
+    }
 
     //to show delivery details
-    /*@GetMapping("")
+    /*@GetMapping("/rider-page/orders/{orderId}")
     // id is rider id
-    public String showDeliveryDetails(@PathVariable Long id, Model model) {
-        model.addAttribute("deliveryDetails", orderRepo.findById(id));
-        return "";
+    public String showDeliveryDetails(@PathVariable Long orderId, @ModelAttribute Rider rider, Model model) {
+        CustOrder custOrder = custOrderRepo.findById(orderId).get();
+        model.addAttribute("custOrder", custOrder);
+        
+        return "destination";
     }*/
 }

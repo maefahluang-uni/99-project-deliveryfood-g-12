@@ -16,17 +16,6 @@ public class Rider {
     private String password;  
     private String email;
      
-    @OneToOne (cascade = CascadeType.ALL)
-    private custOrder custOrder;
-
-    public custOrder getCustOrder() {
-        return custOrder;
-    }
-
-    public void setCustOrder(custOrder custOrder) {
-        this.custOrder = custOrder;
-    }
-
     public Long getId() {
         return id;
     }
