@@ -146,7 +146,7 @@ public class FoodController {
 
     // will take back to order detail page
     return "buyerDetail";
-}
+    }
 
 
     @PostMapping("/make-order2")
@@ -270,19 +270,30 @@ public class FoodController {
     }
 
     @GetMapping("/rider-page/destination/{custOrderId}")
-    public String showDestination(@PathVariable long custOrderId, Model model){
+    public String confirmDelivery(@PathVariable Long custOrderId, Model model){
         CustOrder custOrder = custOrderRepo.findById(custOrderId).get();
         model.addAttribute("custOrder", custOrder);
+        Rider rider = new Rider();
+        custOrder.setRider(rider);
+        model.addAttribute("rider", rider);
         return "destination";
     }
-    
+
     //to show delivery details
-    /*@GetMapping("/rider-page/orders/{orderId}")
+    @PostMapping("/destination/{custOrderId}")
     // id is rider id
-    public String showDeliveryDetails(@PathVariable Long orderId, @ModelAttribute Rider rider, Model model) {
-        CustOrder custOrder = custOrderRepo.findById(orderId).get();
-        model.addAttribute("custOrder", custOrder);
-        
-        return "destination";
-    }*/
+    public String saveDeliveryToRider(@PathVariable Long custOrderId, @ModelAttribute Rider rider, Model model) {
+        CustOrder custOrder = custOrderRepo.findById(custOrderId).get();
+        if (riderRepo.existsByName(rider.getName()) == true) {
+            Rider existRider = riderRepo.findByName(rider.getName());
+
+            //to show the selected order to the rider
+            if (existRider != null) {
+                custOrder.setRider(existRider);
+                custOrderRepo.save(custOrder);
+                return "redirect:/rider-page";
+            }
+        }
+        return "/rider-page/destination/" + custOrderId;
+    }
 }

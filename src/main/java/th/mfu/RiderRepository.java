@@ -11,5 +11,9 @@ public interface RiderRepository extends CrudRepository<Rider, Long>{
     boolean existsByEmail(String email);
 
     Rider findByEmail(String email);
+
+    Rider findByName(String name);
+
+    boolean existsByName(String name);
     
 }
