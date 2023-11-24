@@ -139,21 +139,24 @@ public class FoodController {
 
     @PostMapping("/make-order")
     public String makeOrder(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
-        Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
-        if (buyer.getPassword().equals(existBuyer.getPassword())) {
-            existBuyer.setCustOrder(newOrder);
-            custOrderRepo.save(newOrder);
-            //will take to thank you page
-            return "thankYou";
-        }
-        //will take back to order detail page
-        return "buyerDetail";
+    Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
+
+    if (existBuyer != null && buyer.getPassword().equals(existBuyer.getPassword())) { //resolved null pointerexcepting thingy
+        existBuyer.setCustOrder(newOrder);
+        custOrderRepo.save(newOrder);
+        // will take to thank you page
+        return "thankYou";
     }
+
+    // will take back to order detail page
+    return "buyerDetail";
+}
+
 
     @PostMapping("/make-order2")
     public String makeOrder2(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
-        Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
-        if (buyer.getPassword().equals(existBuyer.getPassword())) {
+    Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
+    if (existBuyer != null && buyer.getPassword().equals(existBuyer.getPassword())) { 
             existBuyer.setCustOrder(newOrder);
             custOrderRepo.save(newOrder);
             //will take to thank you page
@@ -165,8 +168,8 @@ public class FoodController {
 
     @PostMapping("/make-order3")
     public String makeOrder3(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
-        Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
-        if (buyer.getPassword().equals(existBuyer.getPassword())) {
+    Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
+    if (existBuyer != null && buyer.getPassword().equals(existBuyer.getPassword())) { 
             existBuyer.setCustOrder(newOrder);
             custOrderRepo.save(newOrder);
             //will take to thank you page
