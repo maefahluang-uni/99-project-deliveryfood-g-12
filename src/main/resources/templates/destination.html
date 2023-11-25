@@ -18,11 +18,6 @@
             background-position: center;
         }
 
-        header{
-            width: 1440px;
-            height: 129px;
-        }
-
         a{
             background: none;
         }
@@ -51,12 +46,13 @@
         }
 
         .rect1{
-            width: 1140px;
+            width: 800px;
             height: 170px;
             border-radius: 50px;
             margin: auto;
             background-color: #FB963C;
-            margin-top: 64px;
+            margin-top: 300px;
+            padding: 50px 0px 60px 0px;
         }
 
         .shopName{
@@ -256,22 +252,41 @@
             height: 60px;
             margin: 27px;
         }
+
+        .rect1 label{
+            font-size: 50px;
+            margin-left: 225px;
+        }
+
+        .rect1 input{
+            width: 600px;
+            height: 40px;
+            margin-left: 100px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            border: 1px solid #FB963C;
+        }
+
+        .rect1 button{
+            width: 150px;
+            height: 40px;
+            margin-left: 325px;
+            border-radius: 20px;
+            font-size: 20px;
+            background-color: #eee;
+            border: 2px solid grey;
+            color: #FB963C;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logout-circle">
-            <a href="http://127.0.0.1:5501/src/main/resources/templates/Login/Login.html">
-                <img class="logout-icon" src="../static/images/logout 1.png" alt="">   
-            </a>    
-        </div>       
-    </header>
 
     <div class="banner">
         <div class="rect1">
             <form th:action="@{/destination/{id}(id=${custOrder.id})}" th:object="${rider}" method="post">
-                <label>Confirm Delivery</label>
-                <input type="password" th:field="*{name}" required>
+                <label>Confirm Delivery</label><br>
+                <input type="text" th:field="*{name}" required><br>
                 <button class="confirm">Confirm</button>
             </form>
 
