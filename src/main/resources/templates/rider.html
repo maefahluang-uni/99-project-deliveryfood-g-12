@@ -13,9 +13,15 @@
         *{
             background-color: #ffffff;
         }
+
+        body {
+            width: 1280px;
+            margin: auto;
+        }
         
         header{
-            width: 1440px;
+            margin: auto;
+            width: 100%;
             height: 129px;
             background-color: #FFE9C9;
             display: flex;
@@ -54,140 +60,33 @@
             margin-left: 10px;
         }
         
-        .banner{
-            width: 1440px;
-            height: 895px;
-        }
-        
-        .orders-switch{
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            height: 228px;
-            flex-direction: column;
-        
-        }
-        .switch{
-            position: relative;
-            width: 552px;
-            height: 86px;
-            border-radius: 25px;
-            margin-left: 119px;
-        }
-        
-        .switch input{
-            appearance: none;
-            width: 552px;
-            height: 86px;
-            border-radius: 50px;
-            background: #F5E0C2;
-            outline: none;
-        }
-        
-        .switch input::before,
-        .switch input::after{
-            z-index: 2;
-            position: absolute;
-            top: 56%;
-            transform: translateY(-50%);
-            font-weight: bolder;
-        }
-        
-        .switch input::before{
-            content: "All Orders";
-            font-size: 36px;
-            left: 75px;
-        }
-        
-        .switch input::after{
-            content: "Near You";
-            font-size: 36px;
-            right: 75px;
-        }
-        
-        .switch input:checked{
-            background: #F5E0C2;
-        }
-        
-        .switch label{
-            z-index: 1;
-            position: absolute;
-            top: 16px;
-            width: 277px;
-            height: 60px;
-            border-radius: 50px;
-            margin-left: 11px;
-        }
-        
-        .switch input{
-            transition: 0.25s;
-        }
-        
-        .switch input:checked::after{
-            color: #FB963C;
-            transition: color 0.5s;
-        }
-        
-        .switch input:checked::before{
-            color: #ffffff;
-            transition: color 0.5s;
-        }
-        
-        .switch input:checked+label{
-            left: 10px;
-            right: 100px;
-            background: #FB963C;
-            transition: left 0.5s, right 0.4s 0.2s;
-        }
-        
-        .switch input:not(:checked){
-            background-color: #F5E0C2;
-            transition: background 0.4s;
-        }
-        
-        .switch input:not(:checked)::before{
-            color: #FB963C;
-            transition: color 0.5s;
-        }
-        
-        .switch input:not(:checked)::after{
-            color: #ffffff;
-            transition: color 0.5s 0.2s;
-        }
-        
-        .switch input:not(:checked) + label{
-            left: 250px;
-            right: 50px;
-            background: #FB963C;
-            transition: left 0.4s 0.2s, right 0.5s, background 0.35s;
-        }
-        
         .orders-list-container{
-            width: 1334px;
+            width: 100%;
             height: auto;
-            background-color: #FB963C;
-            margin: auto;
-            border-radius: 80px;
+            margin-top: 80px;
+            justify-content: center;
         }
         
         .order-lists{
-            width: 1140px;
+            width: 100%;
             height: 170px;
             border-radius: 30px;
             background-color: #F5E0C2;
             display: inline-flex;
-            margin-left: 97px;
-            margin-top: 113px;
             margin-bottom: 113px;
+            flex-direction:row;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .circle{
             width: 115px;
             height: 115px;
-            border-radius: 100px;
             background-color: #FB963C;
             margin-left: 33px;
-            margin-top: 27px;
+            margin-top: 20px;
+            border:1px solid blue;
+            padding: auto;
         }
         
         .user-icon{
@@ -195,17 +94,20 @@
             width: 70px;
             height: 70px;
             margin: 22px;
+            margin: auto;
         }
         
         .order-lists-text{
             width: 364px;
-            height: 113px;
-            margin-left: 49px;
-            margin-top: 33px;
+            height: auto;
+            text-align: center;
+            margin-top: 10px;
             background: none;
+            
+            align-self:right;
         }
         
-        ul, li{
+        li{
             background: none;
             list-style-type: none;
         }
@@ -219,14 +121,27 @@
             color: #FB963C;
         }
         
-        .cusNo{
+        .cusName {
             font-family: Inter;
             font-size: 30px;
             font-style: normal;
             font-weight: 700;
             line-height: normal;
             color: #FB963C;
-            margin-top: 16px;
+            margin-top: 0;
+        }
+
+        .cusAddress {
+            margin-top: 20px;
+        }
+
+        .cusAddress, .cusPhoneNumber {
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            color: black;
+            margin-top: 10px;
         }
         
     </style>
@@ -245,30 +160,25 @@
             </div> 
         </div>       
     </header>
-    <div class="banner">        
-        <div class="orders-switch">
-            <span class="switch">
-                <input type="checkbox" id="switcher">
-                <label for="switcher"></label>
-            </span>
-        </div>
-
-        <div class="orders-list-container">
-            <div class="order-lists"  th:each="custOrder : ${custOrders}">
-                
-                <div class="circle">
-                    <a th:href="@{/rider-page/destination/{id}(id=${custOrder.id})}">
-                        <img class="user-icon" src="/static/images/user 4.png" alt="">  
-                    </a>                  
-                </div>
-                
-                <div class="order-lists-text" >
-                    <ul>
-                        <li class="orderNo" th:text="${custOrder.id}"></li>
-                        <li class="cusNo" th:text="${custOrder.buyer.name}"></li>
-                    </ul>
-                </div>
+           
+    <div class="orders-list-container">
+        <div class="order-lists"  th:each="custOrder : ${custOrders}">
+            
+            <div class="circle">
+                <a th:href="@{/rider-page/destination/{id}(id=${custOrder.id})}">
+                    <img class="user-icon" src="/static/images/user 4.png" alt="">  
+                </a>                  
             </div>
+            
+            <div class="order-lists-text" >
+                <ul>
+                    <li class="orderNo" th:text="${custOrder.id}">id</li>
+                    <li class="cusName" th:text="${custOrder.buyer.name}">name</li>
+                    <li class="cusAddress" th:text="${custOrder.buyer.address}">address</li>
+                    <li class="cusPhoneNumber" th:text="${custOrder.buyer.phoneNumber}">phone number</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>
