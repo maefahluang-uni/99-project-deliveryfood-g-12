@@ -479,6 +479,34 @@
         border-radius: 50%;
       }
 
+      .button-pop-up{
+        width: 300px;
+        height: 200px;
+        background-color: #eee;
+        margin-left: -400px;
+        margin-top: -200px;
+        border: 2px solid #fb963c;
+        border-radius: 30px;
+        display: block;
+        padding: 20px 10px 10px 10px;;
+      }
+
+      .button-pop-up label{
+        font-size: 30px;
+        font-weight: 500;
+        margin-left: 45px;
+      }
+
+      .button-pop-up input{
+        width: 220px;
+        height: 30px;
+        margin: 20px 0px 35px 37px;
+        border: 1.5px solid #fb963c;
+      }
+      
+      .button-pop-up{
+        display: none;
+      }
     </style>
 </head>
   
@@ -530,7 +558,7 @@
   </div>
 
   <div class="content">
-      <div class="container1">
+      <div class="container1" id="blur">
           <div class="cartItems" id="cartItems">
             <span style='font-size: 50px; margin-left: 145px;'>Your cart is empty!</span>
           </div>
@@ -551,15 +579,18 @@
       <div class="container2">
           <div class="receipt">
               <div class="info">
-                  <p class="total">Total</p><p class="amount" id="total">฿ 0</p>
+                  <p class="total">Total</p><p class="amount" id="total">฿ 150</p>
               </div>
 
               <div class="orderButton">
-                  <form th:action="@{/make-order}" th:object="${buyer}" method="post">
-                      <label>Confirm Order</label>
-                      <input type="password" th:field="*{password}" required>
-                      <button class="order">Order</button>
-                  </form>
+                  <button class="order" onclick="showbutton()" onclick="toggle()">Order</button>
+                  <div class="button-pop-up" id="button-pop-up">
+                    <form th:action="@{/make-order}" th:object="${buyer}" method="post">
+                        <label>Confirm Order</label>
+                        <input type="password" th:field="*{password}" required>
+                        <button class="order">Order</button>
+                    </form>
+                  </div>
               </div>
           </div>
 
@@ -685,6 +716,15 @@ function showcart(){
             cartshow.style.display = "none";
         } else {
             cartshow.style.display = "block";
+        }
+}
+
+function showbutton(){
+  var buttonPopUp = document.getElementById("button-pop-up");
+        if(buttonPopUp.style.display == "block"){
+            buttonPopUp.style.display = "none";
+        } else {
+            buttonPopUp.style.display = "block"; 
         }
 }
 
