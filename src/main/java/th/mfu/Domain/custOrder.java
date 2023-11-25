@@ -20,7 +20,7 @@ public class CustOrder {
     @OneToOne(cascade = CascadeType.ALL)
     private Rider rider;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Buyer buyer;
 
     public Long getId() {
