@@ -8,31 +8,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <title>Choose Your Role</title>
-
     <style>
         .container{
             display:flex;
             flex-direction: column;
             max-width: 1280px;
             margin:auto;
-            background-image: url(/static/images/LoginBg.png);
+            background-image: url(../static/images/rolechoose-bg.jpeg);
             height:100vh;
             background-position: center;
             background-size: 1280px;
             align-content:center ;
-
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .orange-thingy{
             display: inline;
-            width: 700px;
-            height: 600px;
+            width: 450px;
+            height: 500px;
             margin:auto;
             position: absolute;
-            z-index: 0;
             top:180px;
-            background-color: #010101a9;
-            mix-blend-mode: overlay;
+            background-color: white;
+            opacity: 0.8;
             align-self: center;
             border-radius: 30px;
 
@@ -57,11 +56,13 @@
         .Choose_Your_Role{
             color:#000;
             font-weight: 400;
+            position: relative;
             line-height: normal;
             text-align: center;
             font-size: 24px;
             font-family: Inter;
             font-weight: 400;
+            z-index:1;
         }
 
         .buttons{
@@ -111,11 +112,11 @@
             <p class="Choose_Your_Role">Choose Your Role:</p>
         </div>
         <div class="buttons">
-            <a href="/buyer-signup"> <!--Check list-concert of 99assignment-->
+            <a href="/login-buyer">
             <button class="role">Buyer</button>
             </a>
 
-            <a href="/rider-signup">
+            <a href="/login-rider">
             <button class="role">Rider</button>
             </a>
         </div>
