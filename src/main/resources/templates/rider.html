@@ -105,8 +105,8 @@
             width: 364px;
             height: auto;
             text-align: start;
-            margin-top: 0px;
-            background: none;
+            margin-top: opx;
+            background-color: #F5E0C2;
             
             align-self:right;
         }
@@ -115,14 +115,9 @@
             background: none;
             list-style-type: none;
         }
-        
-        .orderNo{
-            font-family: Inter;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            color: #FB963C;
+
+        ul{
+            background-color:#F5E0C2;
         }
         
         .cusName {
@@ -135,11 +130,7 @@
             margin-top: 0;
         }
 
-        .cusAddress {
-            margin-top: 20px;
-        }
-
-        .cusAddress, .cusPhoneNumber {
+        .cusAddress, .cusPhoneNumber, .orderNo {
             font-family: Inter;
             font-size: 20px;
             font-style: normal;
@@ -174,8 +165,8 @@
             
             <div class="order-lists-text" >
                 <ul>
-                    <li class="orderNo" th:text="${custOrder.id}">id</li>
                     <li class="cusName" th:text="${custOrder.buyer.name}">name</li>
+                    <li class="orderNo" th:text="${custOrder.id}">id</li>
                     <li class="cusAddress" th:text="${custOrder.buyer.address}">address</li>
                     <li class="cusPhoneNumber" th:text="${custOrder.buyer.phoneNumber}">phone number</li>
                 </ul>
