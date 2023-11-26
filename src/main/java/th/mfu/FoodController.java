@@ -37,7 +37,7 @@ public class FoodController {
     RiderRepository riderRepo;
 
     @Autowired
-    custOrderRepository custOrderRepo;
+    CustOrderRepository custOrderRepo;
 
 
     ///show login or signup page
