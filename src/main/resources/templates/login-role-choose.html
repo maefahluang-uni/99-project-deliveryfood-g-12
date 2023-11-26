@@ -10,6 +10,7 @@
     <title>Choose Your Role</title>
     <style>
         .container{
+            /*
             display:flex;
             flex-direction: column;
             max-width: 1280px;
@@ -20,11 +21,20 @@
             background-size: 1280px;
             align-content:center ;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: cover; */
+            display:flex;
+            flex-direction: column;
+            max-width: 1280px;
+            margin:auto;
+            background-image: url(/static/images/LoginBg.png);
+            height:100vh;
+            background-position: center;
+            background-size: 1280px;
+            align-content:center ;
         }
 
         .orange-thingy{
-            display: inline;
+            /*display: inline;
             width: 450px;
             height: 500px;
             margin:auto;
@@ -32,6 +42,17 @@
             top:180px;
             background-color: white;
             opacity: 0.8;
+            align-self: center;
+            border-radius: 30px;*/
+            display: inline;
+            width: 700px;
+            height: 600px;
+            margin:auto;
+            position: absolute;
+            z-index: 0;
+            top:180px;
+            background-color: #010101a9;
+            mix-blend-mode: overlay;
             align-self: center;
             border-radius: 30px;
 
