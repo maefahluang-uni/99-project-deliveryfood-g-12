@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import th.mfu.Domain.Buyer;
-import th.mfu.Domain.CustOrder;
+import th.mfu.Domain.custOrder;
 import th.mfu.Domain.Rider;
 
 @Controller
@@ -37,7 +37,7 @@ public class FoodController {
     RiderRepository riderRepo;
 
     @Autowired
-    CustOrderRepository custOrderRepo;
+    custOrderRepository custOrderRepo;
 
 
     ///show login or signup page
@@ -112,28 +112,28 @@ public class FoodController {
     @GetMapping("/buyer-detail") 
     public String showBuyerDetailPage(Model model) {
         model.addAttribute("buyer", new Buyer());
-        model.addAttribute("newOrder", new CustOrder());
+        model.addAttribute("newOrder", new custOrder());
         return "buyerDetail";
     }
 
     @GetMapping("/buyer-detail2") 
     public String showBuyerDetailPage2(Model model) {
         model.addAttribute("buyer", new Buyer());
-        model.addAttribute("newOrder", new CustOrder());
+        model.addAttribute("newOrder", new custOrder());
         return "buyerDetail2";
     }
 
     @GetMapping("/buyer-detail3") 
     public String showBuyerDetailPage3(Model model) {
         model.addAttribute("buyer", new Buyer());
-        model.addAttribute("newOrder", new CustOrder());
+        model.addAttribute("newOrder", new custOrder());
         return "buyerDetail3";
     }
 
     //to make order
 
     @PostMapping("/make-order")
-    public String makeOrder(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
+    public String makeOrder(Model model, @ModelAttribute Buyer buyer, @ModelAttribute custOrder newOrder) {
     Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword()); //change to input username or something
 
     if (existBuyer != null) { //resolved null pointerexcepting thingy( && buyer.getPassword().equals(existBuyer.getPassword()) )
@@ -149,7 +149,7 @@ public class FoodController {
 
 
     @PostMapping("/make-order2")
-    public String makeOrder2(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
+    public String makeOrder2(Model model, @ModelAttribute Buyer buyer, @ModelAttribute custOrder newOrder) {
     Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
     if (existBuyer != null) { 
             newOrder.setBuyer(existBuyer);
@@ -162,7 +162,7 @@ public class FoodController {
     }
 
     @PostMapping("/make-order3")
-    public String makeOrder3(Model model, @ModelAttribute Buyer buyer, @ModelAttribute CustOrder newOrder) {
+    public String makeOrder3(Model model, @ModelAttribute Buyer buyer, @ModelAttribute custOrder newOrder) {
     Buyer existBuyer = buyerRepo.findByPassword(buyer.getPassword());
     if (existBuyer != null) { 
             newOrder.setBuyer(existBuyer);
@@ -270,7 +270,7 @@ public class FoodController {
 
     @GetMapping("/rider-page/destination/{custOrderId}")
     public String confirmDelivery(@PathVariable Long custOrderId, Model model){
-        CustOrder custOrder = custOrderRepo.findById(custOrderId).get();
+        custOrder custOrder = custOrderRepo.findById(custOrderId).get();
         model.addAttribute("custOrder", custOrder);
         Rider rider = new Rider();
         custOrder.setRider(rider);
@@ -282,7 +282,7 @@ public class FoodController {
     @PostMapping("/destination/{custOrderId}")
     // id is rider id
     public String saveDeliveryToRider(@PathVariable Long custOrderId, @ModelAttribute Rider rider, Model model) {
-        CustOrder custOrder = custOrderRepo.findById(custOrderId).get();
+        custOrder custOrder = custOrderRepo.findById(custOrderId).get();
         if (riderRepo.existsByName(rider.getName()) == true) {
             Rider existRider = riderRepo.findByName(rider.getName());
 
