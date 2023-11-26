@@ -287,7 +287,7 @@
             <form th:action="@{/destination/{id}(id=${custOrder.id})}" th:object="${rider}" method="post">
                 <label>Confirm Delivery</label><br>
                 <input type="text" th:field="*{name}" required><br>
-                <button class="confirm">Confirm</button>
+                <button class="confirm" >Confirm</button>
             </form>
 
             <!--<div class="circle3">

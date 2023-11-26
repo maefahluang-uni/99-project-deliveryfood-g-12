@@ -294,6 +294,6 @@ public class FoodController {
                 return "redirect:/rider-page";
             }
         }
-        return "/rider-page/destination/" + custOrderId;
+        return "redirect:/rider-page/destination/" + custOrderId;
     }
 }
