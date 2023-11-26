@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import th.mfu.Domain.Buyer;
 import th.mfu.Domain.CustOrder;
 import th.mfu.Domain.Rider;
-import th.mfu.Domain.CustOrder;
 
 @Controller
 public class FoodController {
