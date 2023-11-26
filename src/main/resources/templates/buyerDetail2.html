@@ -563,46 +563,7 @@
             <span style='font-size: 50px; margin-left: 145px;'>Your cart is empty!</span>
           </div>
 
-<!-------><textarea class="add-description" placeholder="Enter address"></textarea>
-          
 
-          <div class="paymentMethod">
-              <select id="paymentMethods" name="payemntMethods">
-                  <option value="paymentmethod">Payment Method</option>
-                  <option value="bangkokBank">Bangkok Bank</option>
-                  <option value="kBank">K Bank</option>
-                  <option value="governmentBank">Government Bank</option>
-              </select>
-          </div>
-      </div>
-      
-      <div class="container2">
-          <div class="receipt">
-              <div class="info">
-                  <p class="total">Total</p><p class="amount" id="total">฿ 150</p>
-              </div>
-
-              <div class="orderButton">
-                  <button class="order" onclick="showbutton()">Order</button>
-                  <div class="button-pop-up" id="button-pop-up">
-                    <form th:action="@{/make-order}" th:object="${buyer}" method="post">
-                        <label>Confirm Order</label>
-                        <input type="password" th:field="*{password}" required>
-                        <button class="order">Order</button>
-                    </form>
-                  </div>
-              </div>
-          </div>
-
-          <div class="logo">
-              <img src="/static/images/logo.png" alt="our logo" class="icon">
-          </div>
-          
-      </div>
-    </div>
-  </div>
-
-<!--**********************-->
   <div class="menu">
     <div>
       <img class="banner1" src="../static/images/b2.jpeg" alt="banner2">
