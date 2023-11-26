@@ -17,6 +17,7 @@ public class CustOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
 
+    
     @OneToOne(cascade = CascadeType.ALL)
     private Rider rider;
 
