@@ -1,12 +1,27 @@
 package th.mfu;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+
+import javax.transaction.Transactional;
+
+import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import th.mfu.Domain.Buyer;
 import th.mfu.Domain.custOrder;
@@ -158,6 +173,53 @@ public class FoodController {
         //will take back to order detail page
         return "buyerDetail3";
     }
+
+    //to show thankyou page
+    /*@GetMapping("/thank-you")
+    public String showThankYouPage(Model model) {
+        return "thankYou";
+    }*/
+    
+
+    
+   //********************************************* */
+   //to make payment(to move items from cart to order)
+   /*@GetMapping("")
+   public String makeOrder(@ModelAttribute Buyer buyer, @PathVariable Long id, Model model) {
+        //add an order
+        Order order = new Order();
+
+        //add items to orderItem
+        List<Item> cartItems = buyer.getCart();
+
+        if(!cartItems.isEmpty()){
+            List<OrderItem> orderItems = new ArrayList<>();
+
+            for (Item cartItem : cartItems){
+                OrderItem orderItem = new OrderItem();
+                orderItem.setItem(cartItem);
+                orderItems.add(orderItem);
+            }
+            order.setOrderItem((OrderItem) orderItems);
+            orderRepo.save(order);
+
+            buyer.setOrder(order);
+            buyer.getCart().clear();
+            buyerRepo.save(buyer);
+
+            List<Rider> availableRiders = (List<Rider>) riderRepo.findAll();
+
+            if(!availableRiders.isEmpty()){
+                int randomIndex = (int) (Math.random() * availableRiders.size());
+                Rider randomRider = availableRiders.get(randomIndex);
+                order.setRider(randomRider);
+                orderRepo.save(order);
+            }
+        }
+        return ""; // thank you page
+   }*/
+
+
 
    //////////////////////////////RIDER
 
